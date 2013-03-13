@@ -1,4 +1,10 @@
-%h1 Where is Hey Marseilles?
+%h1 TRAILER SWIFT
 / Google Public Location Badge
-%iframe{:frameborder => "0", :height => "500", :src => "http://latitude.google.com/latitude/apps/badge/api?user=8949921407316125013&type=iframe&maptype=hybrid", :width => "900"}
+-#%iframe{:frameborder => "0", :height => "500", :src => "http://latitude.google.com/latitude/apps/badge/api?user=8949921407316125013&type=iframe&maptype=hybrid", :width => "900"}
 / To disable location sharing, you *must* visit https://www.google.com/latitude/apps/badge and disable the Google Public Location badge. Removing this code snippet is not enough!
+
+#map_canvas
+:javascript
+  TrailerSwift.loadMap(#{@lat}, #{@lng});
+  TrailerSwift.locations = new TrailerSwift.Collections.Locations(#{@locations.to_json});
+  TrailerSwift.app = new TrailerSwift.Views.App()
