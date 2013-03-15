@@ -1,9 +1,14 @@
 $.extend(TrailerSwift.Support,
   placeTourDates: ->
-    @place date for date in TrailerSwift.dates.models
+    @placeTourDate date for date in TrailerSwift.dates.models
 
-  place: (date)->
-    @markerFrom date, date.get('venue')
+  placeTourDate: (date)->
+    marker = @markerFrom date, date.get('venue')
+
+    if date.has('ticket_url')
+      google.maps.event.addListener(marker, 'click', ->
+        window.open(date.get('ticket_url'))
+      )
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))
