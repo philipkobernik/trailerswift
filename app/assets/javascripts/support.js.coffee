@@ -1,12 +1,17 @@
 $.extend(TrailerSwift.Support,
+  placeTourDates: ->
+    @place date for date in TrailerSwift.dates.models
+
+  place: (date)->
+    @markerFrom date, date.get('venue')
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))
 
-  markerFrom: (location)->
+  markerFrom: (location, title)->
     return new google.maps.Marker
       position: @latLngFrom(location)
-      title: location.get('reverse')
+      title: title
       map: TrailerSwift.map
 
   polyLineFromLocations: ->

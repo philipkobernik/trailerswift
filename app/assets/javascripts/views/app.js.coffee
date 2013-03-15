@@ -9,3 +9,5 @@ TrailerSwift.Views.App = Backbone.View.extend
 
     vanImage = "/images/van.png"
     TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
+
+    TrailerSwift.Support.placeTourDates()

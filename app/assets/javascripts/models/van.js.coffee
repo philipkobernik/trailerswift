@@ -8,7 +8,7 @@ TrailerSwift.Models.Location = Backbone.Model.extend
 
   setMarker: ->
     console.log 'setting marker'
-    @set('marker', TrailerSwift.Support.markerFrom(@))
+    @set('marker', TrailerSwift.Support.markerFrom(@, @get('reverse')))
 
   showMarker: ->
     if @has('marker') == false
