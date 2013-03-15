@@ -7,4 +7,5 @@
 :javascript
   TrailerSwift.loadMap(#{@lat}, #{@lng});
   TrailerSwift.locations = new TrailerSwift.Collections.Locations(#{@locations.to_json});
-  TrailerSwift.app = new TrailerSwift.Views.App()
+  TrailerSwift.dates = new TrailerSwift.Collections.TourDates(#{@tour_dates.to_json});
+  TrailerSwift.app = new TrailerSwift.Views.App();

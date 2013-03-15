@@ -14,9 +14,9 @@ class DatesToJson
       date_hash = {}
 
       formatted_date = Date.strptime(row[0], "%Y-%m-%d")
-      string_formatted_date = formatted_date.strftime("%d %b %Y")
+      #string_formatted_date = formatted_date.strftime("%d %b %Y")
 
-      date_hash.merge! "date" => string_formatted_date
+      date_hash.merge! "date" => formatted_date
 
       city_state = "#{row[7]}, #{row[8]}" # city, state
       date_hash.merge! "city_state" => city_state
@@ -32,7 +32,7 @@ class DatesToJson
         maps_string = "#{venue} near #{city_state}"
       end
 
-      date_hash.merge! "map_url" => ("https://maps.google.com/maps?q=" << maps_string)
+      date_hash.merge! "map_query" => maps_string
 
       date_hash.merge! "ticket_url" => row[15] # ticket url
 
@@ -41,9 +41,11 @@ class DatesToJson
       formatted_dates_array.unshift date_hash
     end
 
+    puts formatted_dates_array.to_json
     return formatted_dates_array
 
   end
 
 end
 
+DatesToJson.getJsonDates
