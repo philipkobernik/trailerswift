@@ -33,6 +33,8 @@ gem 'geoip'
 
 gem 'haml-rails'
 
+gem 'inherited_resources'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
