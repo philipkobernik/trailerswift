@@ -35,6 +35,8 @@ gem 'haml-rails'
 
 gem 'inherited_resources'
 
+gem 'haml_coffee_assets'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -15,8 +15,10 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require hamlcoffee
 //= require trailer_swift
 //= require google_map
+//= require_tree ./templates
 //= require_tree ./models
 //= require_tree ./collections
 //= require_tree ./views

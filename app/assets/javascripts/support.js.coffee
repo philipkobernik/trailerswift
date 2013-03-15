@@ -1,14 +1,21 @@
 $.extend(TrailerSwift.Support,
+  initInfoWindow: ->
+    TrailerSwift.infoWindow = new google.maps.InfoWindow
+      content: 'uninitialized'
+
   placeTourDates: ->
-    @placeTourDate date for date in TrailerSwift.dates.models
+    @placeTourDate tourDate for tourDate in TrailerSwift.tourDates.models
 
-  placeTourDate: (date)->
-    marker = @markerFrom date, date.get('venue')
+  placeTourDate: (tourDate)->
+    marker = @markerFrom tourDate, tourDate.get('venue')
 
-    if date.has('ticket_url')
-      google.maps.event.addListener(marker, 'click', ->
-        window.open(date.get('ticket_url'))
-      )
+    google.maps.event.addListener(marker, 'click', ->
+      tourDateView = new TrailerSwift.Views.TourDateView
+        model: tourDate
+
+      TrailerSwift.infoWindow.setContent tourDateView.el
+      TrailerSwift.infoWindow.open(TrailerSwift.map, marker)
+    )
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))

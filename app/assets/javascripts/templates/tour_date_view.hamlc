@@ -1,0 +1,15 @@
+%h2 Hey Marseilles @ #{@tourDate.get('venue')}
+%h3= @tourDate.get('city_state')
+%ul
+  %li
+    %span
+      %strong
+        Date:
+    %span= @tourDate.get('date')
+  - if @tourDate.has('facebook_url')
+    %li
+      %a{:href => @tourDate.get('facebook_url')} Facebook event
+  - if @tourDate.has('ticket_url')
+    %li
+      %a{:href => @tourDate.get('ticket_url')} Purchase tickets
+
