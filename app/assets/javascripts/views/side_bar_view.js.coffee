@@ -25,3 +25,9 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
     marker = tourDate.get('marker')
     TrailerSwift.map.setCenter(marker.position)
 
+    tourDateView = new TrailerSwift.Views.TourDateView
+      model: tourDate
+
+    TrailerSwift.infoWindow.setContent tourDateView.el
+    TrailerSwift.infoWindow.open(TrailerSwift.map, marker)
+
