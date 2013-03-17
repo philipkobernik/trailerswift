@@ -1,10 +1,147 @@
+-#!!!
+-#%html
+  -#%head
+    -#%title Trailer Swift
+    -#= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    -#= javascript_include_tag "application", "data-turbolinks-track" => true
+    -#%script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyAYPpFI_wyvt3rugd8nIgKau21DyqDypKQ&sensor=true", :type => "text/javascript"}
+    -#= csrf_meta_tags
+  -#%body
+    -#= yield
+
 !!!
-%html
+%html{:lang => "en"}
   %head
+    %meta{:charset => "utf-8"}/
     %title Trailer Swift
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     %script{:src => "https://maps.googleapis.com/maps/api/js?key=AIzaSyAYPpFI_wyvt3rugd8nIgKau21DyqDypKQ&sensor=true", :type => "text/javascript"}
     = csrf_meta_tags
+
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "", :name => "author"}/
+
+    :css
+      body {
+        padding-top: 24px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+        %link{:href => "../assets/css/bootstrap-responsive.css", :rel => "stylesheet"}/
+    / HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="../assets/js/html5shiv.js"></script>
+    / Fav and touch icons
+    %link{:href => "../assets/ico/apple-touch-icon-144-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
+    %link{:href => "../assets/ico/apple-touch-icon-114-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "114x114"}/
+    %link{:href => "../assets/ico/apple-touch-icon-72-precomposed.png", :rel => "apple-touch-icon-precomposed", :sizes => "72x72"}/
+    %link{:href => "../assets/ico/apple-touch-icon-57-precomposed.png", :rel => "apple-touch-icon-precomposed"}/
+    %link{:href => "../assets/ico/favicon.png", :rel => "shortcut icon"}/
   %body
-    = yield
+    -#.navbar.navbar-inverse.navbar-fixed-top
+      -#.navbar-inner
+        -#.container-fluid
+          -#%button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+            -#%span.icon-bar
+            -#%span.icon-bar
+            -#%span.icon-bar
+          -#%a.brand{:href => "#"} Trailer Swift
+          -#.nav-collapse.collapse
+            -#%p.navbar-text.pull-right
+              -#Logged in as
+              -#%a.navbar-link{:href => "#"} Username
+            -#%ul.nav
+              -#%li.active
+                -#%a{:href => "#"} Home
+              -#%li
+                -#%a{:href => "#about"} About
+              -#%li
+                -#%a{:href => "#contact"} Contact
+          -#/ /.nav-collapse
+    .container-fluid
+      .row-fluid
+        .span3
+          .well.sidebar-nav
+            %ul.nav.nav-list.tour-dates
+              %li.nav-header.tour-dates Tour Dates
+
+            %ul.nav.nav-list
+              %li.nav-header Hey Marseilles
+              %li
+                %a{:href => "http://heymarseilles.com"} Official Site
+              %li
+                %a{:href => "http://heymarseilles.com/store"} Store
+              %li
+                %a{:href => "http://www.facebook.com/heymarseilles"} Facebook
+              %li
+                %a{:href => "http://www.twitter.com/heymarseilles"} Twitter
+              %li
+                %a{:href => "http://www.instagram.com/heymarseilles"} Instagram
+          / /.well
+        / /span
+        .span9
+          .hero-unit
+            = yield
+          -#.row-fluid
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            -#/ /span
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            -#/ /span
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            -#/ /span
+          -#/ /row
+          -#.row-fluid
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            -#/ /span
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            -#/ /span
+            -#.span4
+              -#%h2 Heading
+              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+              -#%p
+                -#%a.btn{:href => "#"} View details »
+            / /span
+          / /row
+        / /span
+      / /row
+      %hr/
+      %footer
+        %p © Company 2013
+    / /.fluid-container
+    /
+      Le javascript
+      \==================================================
+    / Placed at the end of the document so the pages load faster

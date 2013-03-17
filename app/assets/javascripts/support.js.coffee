@@ -8,6 +8,7 @@ $.extend(TrailerSwift.Support,
 
   placeTourDate: (tourDate)->
     marker = @markerFrom tourDate, tourDate.get('venue')
+    tourDate.set('marker', marker)
 
     google.maps.event.addListener(marker, 'click', ->
       tourDateView = new TrailerSwift.Views.TourDateView

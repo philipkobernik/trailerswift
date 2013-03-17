@@ -18,6 +18,7 @@
 //= require hamlcoffee
 //= require trailer_swift
 //= require google_map
+//= require bootstrap
 //= require_tree ./templates
 //= require_tree ./models
 //= require_tree ./collections

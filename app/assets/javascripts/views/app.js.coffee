@@ -1,5 +1,7 @@
 TrailerSwift.Views.App = Backbone.View.extend
   initialize: ->
+    @setElement $(document).find('ul.tour-dates')
+
     @render()
     google.maps.event.addDomListener(window, 'load', @render)
 
@@ -13,3 +15,8 @@ TrailerSwift.Views.App = Backbone.View.extend
     TrailerSwift.Support.placeTourDates()
 
     TrailerSwift.Support.initInfoWindow()
+
+    sideBarView = new TrailerSwift.Views.SideBarView
+      collection: TrailerSwift.tourDates
+
+    #$(document).find('ul.nav.nav-list.tour-dates').after sideBarView.el
