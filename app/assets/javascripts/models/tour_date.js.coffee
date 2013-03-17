@@ -3,6 +3,7 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
     "/tour_dates/#{@get('id')}"
   initialize: ->
     @setLatLng()
+    @set 'marker', TrailerSwift.Support.markerFrom(@, @get('venue'))
 
   setLatLng: ->
     if !@has('lat') && !@has('lng')

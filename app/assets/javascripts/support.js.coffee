@@ -7,16 +7,17 @@ $.extend(TrailerSwift.Support,
     @placeTourDate tourDate for tourDate in TrailerSwift.tourDates.models
 
   placeTourDate: (tourDate)->
-    marker = @markerFrom tourDate, tourDate.get('venue')
-    tourDate.set('marker', marker)
 
     google.maps.event.addListener(marker, 'click', ->
-      tourDateView = new TrailerSwift.Views.TourDateView
-        model: tourDate
-
-      TrailerSwift.infoWindow.setContent tourDateView.el
-      TrailerSwift.infoWindow.open(TrailerSwift.map, marker)
+      TrailerSwift.Support.loadInfoView tourDate
     )
+
+  loadInfoView: (tourDate)->
+    tourDateView = new TrailerSwift.Views.TourDateView
+      model: tourDate
+
+    TrailerSwift.infoWindow.setContent tourDateView.el
+    TrailerSwift.infoWindow.open(TrailerSwift.map, tourDate.get('marker'))
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))

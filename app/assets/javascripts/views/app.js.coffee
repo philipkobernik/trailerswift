@@ -18,5 +18,3 @@ TrailerSwift.Views.App = Backbone.View.extend
 
     sideBarView = new TrailerSwift.Views.SideBarView
       collection: TrailerSwift.tourDates
-
-    #$(document).find('ul.nav.nav-list.tour-dates').after sideBarView.el
