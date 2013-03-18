@@ -7,7 +7,7 @@ class WelcomeController < ApplicationController
 
     @tour_dates = TourDate.all
 
-    @user_location = Geolocation.new(request.ip)
+    @user_location = Geolocation.new(request.remote_ip)
 
     render 'welcome/index'
   end
