@@ -16,6 +16,7 @@
 //= require underscore
 //= require backbone
 //= require hamlcoffee
+//= require moment
 //= require trailer_swift
 //= require google_map
 //= require bootstrap

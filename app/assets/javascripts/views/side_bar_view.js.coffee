@@ -10,7 +10,8 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
     "click a" : "onClick"
 
   render: ->
-    _.each(@collection.models, (model)=>
+    models = @collection.upcoming()
+    _.each(models, (model)=>
       view = JST['side_bar_date'] tourDate: model
       @$el.append view
     )
