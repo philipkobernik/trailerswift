@@ -18,3 +18,6 @@ TrailerSwift.Views.App = Backbone.View.extend
 
     sideBarView = new TrailerSwift.Views.SideBarView
       collection: TrailerSwift.tourDates
+
+    currentLocationView = new TrailerSwift.Views.userLocationView
+      model: TrailerSwift.userLocation
