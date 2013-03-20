@@ -21,3 +21,7 @@ TrailerSwift.Views.App = Backbone.View.extend
 
     currentLocationView = new TrailerSwift.Views.userLocationView
       model: TrailerSwift.userLocation
+
+    closestTourDateView = new TrailerSwift.Views.ClosestTourDate
+      miles: TrailerSwift.closestTourDate[0]
+      tourDate: TrailerSwift.tourDates.get(TrailerSwift.closestTourDate[1])
