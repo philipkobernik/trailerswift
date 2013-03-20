@@ -1,2 +1,4 @@
 %li
   %a.tour-date{:href => "#", :data-tour-date-id => @tourDate.get('id')}= "#{@formattedDate} #{@tourDate.get('city_state')}"
+  -#- if @tourDate.get('id') == TrailerSwift.closestTourDate[1]
+    -#%span Closest upcoming date to you!
