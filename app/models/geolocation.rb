@@ -13,4 +13,8 @@ class Geolocation
     self.lat = geodata[9]
     self.lng = geodata[10]
   end
+
+  def to_coordinates
+    return [self.lat, self.lng]
+  end
 end

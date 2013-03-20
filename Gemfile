@@ -31,6 +31,8 @@ gem 'httparty'
 
 gem 'geoip'
 
+gem 'geocoder'
+
 gem 'haml-rails'
 
 gem 'inherited_resources'

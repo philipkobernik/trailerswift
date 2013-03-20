@@ -9,4 +9,5 @@
   TrailerSwift.locations = new TrailerSwift.Collections.Locations(#{@locations.to_json});
   TrailerSwift.tourDates = new TrailerSwift.Collections.TourDates(#{@tour_dates.to_json});
   TrailerSwift.userLocation = new TrailerSwift.Models.UserLocation(#{@user_location.to_json});
+  TrailerSwift.closestTourDate = #{@closest_tour_date};
   TrailerSwift.app = new TrailerSwift.Views.App();
