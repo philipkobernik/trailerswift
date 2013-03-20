@@ -10,9 +10,16 @@ body {
 
 #map_canvas {
   width: 100% !important;
-  height: 744px !important;
+  height: 849px !important;
 }
 
 .hero-unit {
   padding: 0 !important;
+}
+
+/* Landscape phones and down */
+@media (max-width: 767px) {
+  body {
+    padding: 0 !important;
+  }
 }
