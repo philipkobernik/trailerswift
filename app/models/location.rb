@@ -2,6 +2,10 @@ class Location < ActiveRecord::Base
 
   validates :located_at, :uniqueness => true
 
+  def to_coordinates
+    return [self.lat, self.lng]
+  end
+
   def self.fetch
     latitude_endpoint = "http://www.google.com/latitude/apps/badge/api?user=#{ENV['latitude_user_id']}&type=json" 
     loc = HTTParty.get latitude_endpoint

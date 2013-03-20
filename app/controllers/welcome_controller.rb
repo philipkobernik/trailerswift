@@ -7,9 +7,13 @@ class WelcomeController < ApplicationController
 
     @tour_dates = TourDate.all
 
-    @user_location = current_location = Geolocation.new("google.com")
+    @user_location = current_location = Geolocation.new(request.remote_ip)
 
     @closest_tour_date = ClosestTourDate.from current_location
+
+    center = Geocoder::Calculations.geographic_center [@user_location, @locations.last, TourDate.find(@closest_tour_date[1])]
+    user_to_center = Geocoder::Calculations.distance_between center, current_location
+    @bounding_box = Geocoder::Calculations.bounding_box(center, (user_to_center * 1.3))
 
     render 'welcome/index'
   end
