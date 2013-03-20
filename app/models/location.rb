@@ -3,7 +3,8 @@ class Location < ActiveRecord::Base
   validates :located_at, :uniqueness => true
 
   def self.fetch
-    loc = HTTParty.get "http://www.google.com/latitude/apps/badge/api?user=8949921407316125013&type=json"
+    latitude_endpoint = "http://www.google.com/latitude/apps/badge/api?user=#{ENV['latitude_user_id']}&type=json" 
+    loc = HTTParty.get latitude_endpoint
 
     if loc and loc["features"] and location = loc["features"][0]
       new_location = self.new
