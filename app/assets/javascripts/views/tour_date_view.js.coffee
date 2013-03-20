@@ -5,7 +5,6 @@ class TrailerSwift.Views.TourDateView extends Backbone.View
     @render()
 
   render: ->
-    console.log @model
     formattedDate = moment(new Date(@model.get('date'))).format('M/D/YY')
     @$el.html @template
       tourDate: @model
