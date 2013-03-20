@@ -5,7 +5,7 @@
     %span
       %strong
         Date:
-    %span= @tourDate.get('date')
+    %span= @formattedDate
   - if @tourDate.has('facebook_url')
     %li
       %a{:href => @tourDate.get('facebook_url')} Facebook event

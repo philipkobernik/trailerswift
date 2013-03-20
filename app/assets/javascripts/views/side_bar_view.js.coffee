@@ -12,7 +12,11 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
   render: ->
     models = @collection.upcoming()
     _.each(models, (model)=>
-      view = JST['side_bar_date'] tourDate: model
+      formattedDate = moment(new Date(model.get('date'))).format('M/D')
+      view = JST['side_bar_date']
+        tourDate: model
+        formattedDate: formattedDate
+
       @$el.append view
     )
 

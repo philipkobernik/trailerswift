@@ -1,2 +1,2 @@
 %li
-  %a.tour-date{:href => "#", :data-tour-date-id => @tourDate.get('id')}= "#{@tourDate.get('date')} #{@tourDate.get('city_state')}"
+  %a.tour-date{:href => "#", :data-tour-date-id => @tourDate.get('id')}= "#{@formattedDate} #{@tourDate.get('city_state')}"
