@@ -3,7 +3,15 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
     "/tour_dates/#{@get('id')}"
   initialize: ->
     @setLatLng()
-    @set 'marker', TrailerSwift.Support.markerFrom(@, @get('venue'))
+
+    date = moment @get('date')
+    now = moment()
+    if date > now
+      marker = TrailerSwift.Support.markerFrom(@, @get('venue'))
+    else
+      marker = TrailerSwift.Support.imageMarker(@, '/images/green-check.png')
+
+    @set 'marker', marker
 
   setLatLng: ->
     if !@has('lat') && !@has('lng')
