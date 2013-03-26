@@ -18,6 +18,8 @@ TrailerSwift.Views.App = Backbone.View.extend
     sideBarView = new TrailerSwift.Views.SideBarView
       collection: TrailerSwift.tourDates
 
+    TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
+
     #currentLocationView = new TrailerSwift.Views.userLocationView
       #model: TrailerSwift.userLocation
 

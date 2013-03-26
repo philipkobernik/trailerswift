@@ -14,7 +14,7 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
         tourDate: model
         formattedDate: formattedDate
 
-      @$el.append view
+      @$el.find('li.tour-dates-header').after view
     )
 
   onClick: (event)->
