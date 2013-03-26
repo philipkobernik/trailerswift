@@ -5,6 +5,7 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
     @setLatLng()
 
     date = moment @get('date')
+    date.add('days', 1)
     now = moment()
     if date > now
       marker = TrailerSwift.Support.markerFrom(@, @get('venue'))
