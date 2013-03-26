@@ -1,6 +1,5 @@
 TrailerSwift.loadMap = (lat, lng)->
 
-  console.log "gmap initializing"
   mapOptions =
     center: new google.maps.LatLng(lat, lng)
     zoom: 5
