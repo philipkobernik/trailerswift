@@ -4,7 +4,7 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
     @render()
 
   events:
-    "click a" : "onClick"
+    "click a.tour-date" : "onClick"
 
   render: ->
     models = @collection.upcoming()
