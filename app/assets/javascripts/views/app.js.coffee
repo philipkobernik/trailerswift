@@ -1,15 +1,19 @@
-TrailerSwift.Views.App = Backbone.View.extend
+class TrailerSwift.Views.App extends Backbone.View
   initialize: ->
     @setElement $(document).find('ul.tour-dates')
 
     google.maps.event.addDomListener(window, 'load', @render)
 
-  render: ->
+  render: =>
     TrailerSwift.vanPoly = TrailerSwift.Support.polyLineFromLocations()
     TrailerSwift.vanPath = TrailerSwift.vanPoly.getPath()
     TrailerSwift.vanPoly.setMap(TrailerSwift.map)
 
-    vanImage = "/images/van1.png"
+    if @headingWest()
+      vanImage = "/images/van-west.png"
+    else
+      vanImage = "/images/van-east.png"
+
     TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
     TrailerSwift.Support.placeTourDates()
 
@@ -26,4 +30,10 @@ TrailerSwift.Views.App = Backbone.View.extend
     #closestTourDateView = new TrailerSwift.Views.ClosestTourDate
       #miles: TrailerSwift.closestTourDate[0]
       #tourDate: TrailerSwift.tourDates.get(TrailerSwift.closestTourDate[1])
+
+  headingWest: ->
+    nowLocation = TrailerSwift.locations.slice(-1)[0]
+    lastLocation = TrailerSwift.locations.slice(-2, -1)[0]
+
+    return nowLocation.get('lng') < lastLocation.get('lng')
 
