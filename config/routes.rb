@@ -12,6 +12,9 @@ TrailerTrail::Application.routes.draw do
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  #
+  get 'subscriptions/callback' => 'subscriptions#callback_confirm', as: :subscription_confirm
+
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products

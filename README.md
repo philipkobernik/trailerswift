@@ -1,4 +1,4 @@
-Trailer Swift
+# Trailer Swift
 =============
 
 Tour tracking
@@ -78,3 +78,36 @@ I don't remember if there are any specs yet.
     rake db:test:prepare
     rspec spec/
 
+## Notes / thoughts
+
+Current:
+ * app loads location lat/lngs from db
+ * assumes that most recent lat/lng is position of trailer
+ * requires reload to see updates...
+
+Imagined (real-time magic):
+ * app bootstraps existing data points, existing photos
+ * gets real-time updates on locations, animates van and draws line
+ * gets real-time updates on photos tagged #TrailerSwift posts them at real location OR user's location
+ * gets real-time updates on photos tagged #HeyMarseilles
+
+App caches photos in DB by subscribing to the tags TrailerSwift and HeyMarseilles
+
+App caches photos posted by HM instagram account... displays these more prominently
+
+Pieces involved:
+
+Realtime -- integrate with pubnub/pusher for push updates
+
+Instagram --
+InstagramClient that subscribes to 
+ * hey marseilles user new photos
+ * tag: TrailerSwift
+ * tag: HeyMarseilles
+
+Subscription flow needs:
+ * endpoint for subscription callback http://instagram.com/developer/realtime/
+ * respond to GET by echoing the challenge string
+ * respond to POST request of new photos...
+
+SUBSCRIPTION does not need access_token.
