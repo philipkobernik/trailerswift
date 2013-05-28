@@ -15,6 +15,8 @@ TrailerTrail::Application.routes.draw do
   #
   get 'subscriptions/callback' => 'subscriptions#callback_confirm', as: :subscription_confirm
 
+  post 'subscriptions/callback' => 'subscriptions#callback_new_media', as: :subscription_new_media
+
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
