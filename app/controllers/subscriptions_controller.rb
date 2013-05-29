@@ -10,8 +10,9 @@ class SubscriptionsController < ApplicationController
 
   def callback_new_media
     puts params
+    puts request.body
 
-    if params[:body].present?
+    if request.body.present?
       body = JSON.parse(params[:body])
 
       body.each do |attrs|
