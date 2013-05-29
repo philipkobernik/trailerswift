@@ -1,4 +1,5 @@
 class SubscriptionsController < ApplicationController
+  respond_to :json
 
   def callback_confirm
 
@@ -13,7 +14,17 @@ class SubscriptionsController < ApplicationController
     puts request.body
 
     if request.body.present?
-      body = JSON.parse(params[:body])
+      string = URI.parse request.body
+      puts ""
+      puts " *********** STRING *********** "
+      puts ""
+      puts string
+
+      puts ""
+      puts " *********** BODY *********** "
+      puts ""
+      body = JSON.parse(string)
+      puts body
 
       body.each do |attrs|
         puts "update attrs from instagram:"
@@ -23,7 +34,8 @@ class SubscriptionsController < ApplicationController
     end
 
     respond_to do |format|
-      format.any { render :text => "", status: 200 }
+      format.json { render :text => "", status: 200 }
+      format.any { render :text => "only json, please", status: 400 }
     end
 
   end
