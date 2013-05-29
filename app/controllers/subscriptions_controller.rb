@@ -11,6 +11,7 @@ class SubscriptionsController < ApplicationController
 
   def callback_new_media
     puts params
+    puts request.headers
     puts request.body
 
     string = request.body.read()
