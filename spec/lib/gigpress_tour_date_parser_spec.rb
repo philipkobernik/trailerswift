@@ -2,8 +2,13 @@ require_relative '../../lib/gigpress/tour_date_parser'
 require 'csv'
 # require 'spec_helper'
 
+class Rails; end
+
 describe Gigpress::TourDateParser do
   let(:klass) { Gigpress::TourDateParser }
+  before do
+    Rails.stub(:root) { "/src/trailerswift"}
+  end
 
   subject { klass.read("test.csv")}
 
