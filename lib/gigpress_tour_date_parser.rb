@@ -1,7 +1,7 @@
 module Gigpress
-  class GigpressTourDateParser
+  class TourDateParser
 
-    def self.open(file_name="dates.csv", overrides={})
+    def self.read(file_name="dates.csv", overrides={})
       dates_csv = CSV.read(File.join("/src","trailerswift", "db", "tour_dates", file_name))
       dates_csv.shift # remove first row as it contains headers
 
@@ -34,6 +34,9 @@ module Gigpress
 
         date_hash.merge! :facebook_url => row[17] # ticket url
 
+        date_hash.merge! :lat => row[23] unless row[23].nil?
+        date_hash.merge! :lng => row[24] unless row[24].nil?
+
         date_hash.merge! overrides
 
         formatted_dates_array.unshift date_hash
@@ -43,7 +46,5 @@ module Gigpress
       return formatted_dates_array
 
     end
-
-
   end
 end
