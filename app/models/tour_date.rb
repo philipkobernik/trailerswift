@@ -1,5 +1,5 @@
 class TourDate < ActiveRecord::Base
-  belongs_to :tour, :dependent => :destroy
+  belongs_to :tour
 
   validates :date, :uniqueness => {:scope => [ :tour_id, :venue ] }
   

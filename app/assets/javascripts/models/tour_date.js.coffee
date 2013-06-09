@@ -4,15 +4,19 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
   initialize: ->
     @setLatLng()
 
+    @set 'marker', @buildMarker()
+
+  buildMarker: ->
     date = moment @get('date')
     date.add('days', 1)
     now = moment()
+
     if date > now
       marker = TrailerSwift.Support.markerFrom(@, @get('venue'))
     else
       marker = TrailerSwift.Support.imageMarker(@, '/images/green-check.png')
 
-    @set 'marker', marker
+    return marker
 
   setLatLng: ->
     if !@has('lat') && !@has('lng')
@@ -37,17 +41,7 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
       lng: location["kb"]
 
     @unset "marker"
-    @save()
-
-    @set
-      latLng: location
-
-    # after its done, give it a marker
-
-    if date > now
-      marker = TrailerSwift.Support.markerFrom(@, @get('venue'))
-    else
-      marker = TrailerSwift.Support.imageMarker(@, '/images/green-check.png')
-
-    @set 'marker', marker
+    @save
+      success: console.log 'update model success!'
+      error: console.log 'update model error!'
 
