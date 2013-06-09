@@ -1,4 +1,4 @@
-require_relative '../../lib/gigpress_tour_date_parser'
+require_relative '../../lib/gigpress/tour_date_parser'
 require 'csv'
 # require 'spec_helper'
 

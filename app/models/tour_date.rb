@@ -1,5 +1,7 @@
 class TourDate < ActiveRecord::Base
   belongs_to :tour, :dependent => :destroy
+
+  validates :date, :uniqueness => {:scope => [ :tour_id, :venue ] }
   
   scope :upcoming, lambda { where("date > ?", (Time.zone.now - 1.day) ) } 
 
