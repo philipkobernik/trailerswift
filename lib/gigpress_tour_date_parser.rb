@@ -1,7 +1,7 @@
 module Gigpress
   class TourDateParser
 
-    def self.read(file_name="dates.csv", overrides={})
+    def self.read(file_name="dates.csv")
       dates_csv = CSV.read(File.join("/src","trailerswift", "db", "tour_dates", file_name))
       dates_csv.shift # remove first row as it contains headers
 
@@ -9,7 +9,7 @@ module Gigpress
       dates_csv.each do |row|
         date_hash = {}
 
-        formatted_date = Date.strptime(row[0], "%Y-%m-%d")
+        formatted_date = DateTime.strptime("#{row[0]}T#{row[1]}", "%Y-%m-%dT%H:%M:%S")
         #string_formatted_date = formatted_date.strftime("%d %b %Y")
 
         date_hash.merge! :date => formatted_date
@@ -34,10 +34,8 @@ module Gigpress
 
         date_hash.merge! :facebook_url => row[17] # ticket url
 
-        date_hash.merge! :lat => row[23] unless row[23].nil?
-        date_hash.merge! :lng => row[24] unless row[24].nil?
-
-        date_hash.merge! overrides
+        date_hash.merge! :lat => row[23].to_f unless row[23].nil?
+        date_hash.merge! :lng => row[24].to_f unless row[24].nil?
 
         formatted_dates_array.unshift date_hash
       end
