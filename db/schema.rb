@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130315035707) do
+ActiveRecord::Schema.define(version: 20130608215347) do
 
   create_table "locations", force: true do |t|
     t.float    "lng"
@@ -29,6 +29,13 @@ ActiveRecord::Schema.define(version: 20130315035707) do
     t.string   "facebook_url"
     t.float    "lat"
     t.float    "lng"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "tour_id"
+  end
+
+  create_table "tours", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
