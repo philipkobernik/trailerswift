@@ -1,4 +1,5 @@
 class Location < ActiveRecord::Base
+  belongs_to :tour
 
   validates :located_at, :uniqueness => true
 
@@ -23,6 +24,8 @@ class Location < ActiveRecord::Base
         new_location.located_at = Time.at(properties["timeStamp"]).to_datetime if properties["timeStamp"]
         new_location.reverse = properties["reverseGeocode"] if properties["reverseGeocode"]
       end
+
+      new_location.tour = Tour.find_by_name(Settings.current_tour)
 
       new_location.save
     end

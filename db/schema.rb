@@ -11,13 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130608215347) do
+ActiveRecord::Schema.define(version: 20130609050124) do
+
+  create_table "instagram_photos", force: true do |t|
+    t.string  "tags"
+    t.string  "location"
+    t.string  "created_time"
+    t.string  "link"
+    t.string  "images"
+    t.string  "caption"
+    t.string  "user"
+    t.integer "instagram_id"
+  end
 
   create_table "locations", force: true do |t|
     t.float    "lng"
     t.float    "lat"
     t.datetime "located_at"
     t.string   "reverse"
+    t.integer  "tour_id"
   end
 
   create_table "tour_dates", force: true do |t|
