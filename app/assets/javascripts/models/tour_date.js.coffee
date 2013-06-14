@@ -7,8 +7,8 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
     @set 'marker', @buildMarker()
 
   toString: ->
-    formattedDate = moment(@model.get('date')).format('M/D/YY')
-    "#{formattedDate} #{@model.get('city_state')}"
+    formattedDate = moment(@get('date')).format('M/D/YY')
+    "#{formattedDate} #{@get('city_state')}"
    
  
 
