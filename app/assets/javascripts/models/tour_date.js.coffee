@@ -4,15 +4,19 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
   initialize: ->
     @setLatLng()
 
+    @set 'marker', @buildMarker()
+
+  buildMarker: ->
     date = moment @get('date')
     date.add('days', 1)
     now = moment()
+
     if date > now
       marker = TrailerSwift.Support.markerFrom(@, @get('venue'))
     else
       marker = TrailerSwift.Support.imageMarker(@, '/images/green-check.png')
 
-    @set 'marker', marker
+    return marker
 
   setLatLng: ->
     if !@has('lat') && !@has('lng')
@@ -24,6 +28,7 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
         latLng: TrailerSwift.Support.latLngFrom @
 
   onGeocode: (results, status) =>
+    console.log "geocoding to do..."
     if status != google.maps.GeocoderStatus.OK
       return false
 
@@ -32,10 +37,11 @@ class TrailerSwift.Models.TourDate extends Backbone.Model
 
 
     @set
-      lat: location.mb
-      lng: location.nb
+      lat: location["jb"]
+      lng: location["kb"]
 
-    @save()
+    @unset "marker"
+    @save
+      success: console.log 'update model success!'
+      error: console.log 'update model error!'
 
-    @set
-      latLng: location

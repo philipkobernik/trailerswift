@@ -1,11 +1,11 @@
 class WelcomeController < ApplicationController
   def index
-    @locations = Location.order('located_at ASC')
+    @locations = Tour.find_by_name(Settings.current_tour).locations.order('located_at ASC')
 
     @lat = @locations.last.lat
     @lng = @locations.last.lng
 
-    @tour_dates = TourDate.all
+    @tour_dates = Tour.find_by_name(Settings.current_tour).tour_dates
 
     render 'welcome/index'
   end
