@@ -20,7 +20,9 @@ $.extend(TrailerSwift.Support,
 
     TrailerSwift.infoWindow.setContent tourDateView.el
     TrailerSwift.infoWindow.open(TrailerSwift.map, tourDate.get('marker'))
-    mixpanel.track('pop tour-date info window')
+    mixpanel.track('pop tour-date info window',
+      'tour-date': @model.toString()
+      )
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))
