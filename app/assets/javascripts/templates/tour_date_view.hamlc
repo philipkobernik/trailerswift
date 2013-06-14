@@ -7,8 +7,8 @@
     %span= "#{@formattedDate} #{@tourDate.get('city_state')}"
   - if @tourDate.has('ticket_url')
     %li
-      %a.btn.btn-primary.btn-block{:href => @tourDate.get('ticket_url')} Purchase tickets
+      %a.purchase.btn.btn-primary.btn-block{:href => @tourDate.get('ticket_url')} Purchase tickets
   - if @tourDate.has('facebook_url')
     %li
-      %a.btn.btn-info.btn-block{:href => @tourDate.get('facebook_url')} Facebook event
+      %a.facebook.btn.btn-info.btn-block{:href => @tourDate.get('facebook_url')} Facebook event
 

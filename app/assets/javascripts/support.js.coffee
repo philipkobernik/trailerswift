@@ -20,6 +20,12 @@ $.extend(TrailerSwift.Support,
 
     TrailerSwift.infoWindow.setContent tourDateView.el
     TrailerSwift.infoWindow.open(TrailerSwift.map, tourDate.get('marker'))
+    console.log('pop tour-date info window', {'tour-date': tourDate.toString()})
+    mixpanel.track('pop tour-date info window',
+      'tour-date': tourDate.toString()
+      )
+    mixpanel.track_links('a.purchase', 'clicked purchase-ticket link');
+    mixpanel.track_links('a.facebook', 'clicked facebook event link');
 
   latLngFrom: (location)->
     return new google.maps.LatLng(location.get('lat'), location.get('lng'))
