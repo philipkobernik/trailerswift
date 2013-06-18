@@ -15,6 +15,6 @@
 /log/*.log
 /tmp
 
-# Ignore heroku environment vars
-/config/heroku_env.rb
+# Ignore local settings (secrets etc)
+/config/settings.local.yml
 
