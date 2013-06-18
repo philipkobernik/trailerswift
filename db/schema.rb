@@ -14,15 +14,24 @@
 ActiveRecord::Schema.define(version: 20130609050124) do
 
   create_table "instagram_photos", force: true do |t|
-    t.string  "tags"
-    t.string  "location"
-    t.string  "created_time"
-    t.string  "link"
-    t.string  "images"
-    t.string  "caption"
-    t.string  "user"
-    t.integer "instagram_id"
+    t.string   "tags",              array: true
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "created_time"
+    t.string   "link"
+    t.string   "img_url_thumb"
+    t.string   "img_url_low"
+    t.string   "img_url_standard"
+    t.string   "caption"
+    t.string   "users_in_photo",    array: true
+    t.string   "instagram_user"
+    t.string   "instagram_user_id"
+    t.string   "instagram_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "instagram_photos", ["instagram_id"], name: "index_instagram_photos_on_instagram_id", unique: true
 
   create_table "locations", force: true do |t|
     t.float    "lng"
