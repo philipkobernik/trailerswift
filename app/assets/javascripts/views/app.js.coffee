@@ -5,6 +5,7 @@ class TrailerSwift.Views.App extends Backbone.View
     google.maps.event.addDomListener(window, 'load', @render)
 
   render: =>
+    console.log 'window load event fired. running views.app.render()'
     TrailerSwift.vanPoly = TrailerSwift.Support.polyLineFromLocations()
     TrailerSwift.vanPath = TrailerSwift.vanPoly.getPath()
     TrailerSwift.vanPoly.setMap(TrailerSwift.map)
@@ -22,7 +23,10 @@ class TrailerSwift.Views.App extends Backbone.View
     sideBarView = new TrailerSwift.Views.SideBarView
       collection: TrailerSwift.tourDates
 
+
     TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
+
+    TrailerSwift.Support.placeInstagramPhotos()
 
     #currentLocationView = new TrailerSwift.Views.userLocationView
       #model: TrailerSwift.userLocation
@@ -36,4 +40,3 @@ class TrailerSwift.Views.App extends Backbone.View
     lastLocation = TrailerSwift.locations.slice(-2, -1)[0]
 
     return nowLocation.get('lng') < lastLocation.get('lng')
-

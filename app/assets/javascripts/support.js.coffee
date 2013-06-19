@@ -1,7 +1,18 @@
 $.extend(TrailerSwift.Support,
+  placeInstagramPhotos: ->
+    @placeInstagramPhoto photo for photo in TrailerSwift.instagramPhotos.models
+
+  placeInstagramPhoto: (photo)->
+    marker = photo.get('marker')
+
+    google.maps.event.addListener(marker, 'click', ->
+      TrailerSwift.Support.loadPhotoInfoView photo
+    )
+
   initInfoWindow: ->
     TrailerSwift.infoWindow = new google.maps.InfoWindow
       content: 'uninitialized'
+      maxWidth: 340
 
   placeTourDates: ->
     @placeTourDate tourDate for tourDate in TrailerSwift.tourDates.models
@@ -13,6 +24,16 @@ $.extend(TrailerSwift.Support,
     google.maps.event.addListener(marker, 'click', ->
       TrailerSwift.Support.loadInfoView tourDate
     )
+
+  loadPhotoInfoView: (model)->
+    constructor = TrailerSwift.Views.InstagramPhotoView
+    view = new constructor
+      model: model
+
+    TrailerSwift.infoWindow.setContent view.el
+    TrailerSwift.infoWindow.open(TrailerSwift.map, model.get('marker'))
+
+    mixpanel.track('pop photo info window', photoId: model.get('instagram_id'))
 
   loadInfoView: (tourDate)->
     tourDateView = new TrailerSwift.Views.TourDateView
@@ -55,9 +76,11 @@ $.extend(TrailerSwift.Support,
         repeat: '20px'
       ]
 
-  imageMarker: (location, imagePath)->
+  imageMarker: (location, imagePath, iconOptions={})->
+    icon = _.extend({}, iconOptions, url: imagePath)
+
     return new google.maps.Marker
       position: location.get('latLng')
-      icon: imagePath
+      icon: icon
       map: TrailerSwift.map
 )

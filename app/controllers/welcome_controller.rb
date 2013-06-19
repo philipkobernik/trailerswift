@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
     @lng = @locations.last.lng
 
     @tour_dates = Tour.find_by_name(Settings.current_tour).tour_dates
+    @instagram_photos = InstagramPhoto.all
 
     render 'welcome/index'
   end

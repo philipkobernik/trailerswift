@@ -1,0 +1,2 @@
+%img{src: @photo.get('img_url_low')}
+%p= @photo.get('caption')
