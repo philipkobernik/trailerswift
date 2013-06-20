@@ -3,7 +3,7 @@ module Instagram
     class << self
 
       def update_media_for_user user_id, options={}
-        instagram_client = Instagram.client access_token: Settings.instagram.access_token
+        instagram_client = Instagram.client access_token: ENV['instagram_access_token']
         images = instagram_client.user_recent_media(user_id, options)
 
         images.reverse.each do |image|

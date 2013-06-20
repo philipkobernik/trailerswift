@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-TrailerTrail::Application.config.secret_key_base = Settings.rails.secret_token
+TrailerTrail::Application.config.secret_key_base = ENV['rails_secret_token']

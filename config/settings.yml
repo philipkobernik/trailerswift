@@ -1,2 +1,4 @@
-
 current_tour: Lines We Trace Midwest Madness Tour
+
+instagram:
+  redirect_uri: 'http://www.trailer-swift.com/oauth/callback'
