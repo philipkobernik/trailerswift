@@ -1,5 +1,5 @@
 class AddInstagramPhoto < ActiveRecord::Migration
-  def change
+  def up
     create_table :instagram_photos do |t|
       t.string :tags, array: true
       t.float :lat
@@ -18,5 +18,9 @@ class AddInstagramPhoto < ActiveRecord::Migration
     end
 
     add_index :instagram_photos, :instagram_id, unique: true
+  end
+
+  def down
+    drop_table :instagram_photos
   end
 end
