@@ -1,2 +1,8 @@
-%img{src: @photo.get('img_url_low')}
+%img.img-polaroid{src: @photo.get('img_url_low')}
 %p= @photo.get('caption')
+- if @photo.has('users_in_photo')
+  %ul
+    - for user in @photo.get('users_in_photo')
+      %li
+        %i.icon-user
+        %span= user[0]

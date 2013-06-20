@@ -15,7 +15,7 @@ module Instagram
           i.img_url_low = image.images.low_resolution.url
           i.img_url_standard = image.images.standard_resolution.url
           i.caption = image.caption.text
-          i.users_in_photo = image.users_in_photo
+          i.users_in_photo = image.users_in_photo.map { |tagged| [tagged.user.username, tagged.user.profile_picture] }
           i.instagram_user = image.user.username
           i.instagram_user_id = image.user.id
           i.instagram_id = image.id

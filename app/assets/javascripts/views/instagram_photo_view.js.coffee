@@ -1,4 +1,6 @@
 class TrailerSwift.Views.InstagramPhotoView extends Backbone.View
+  id: "info-window"
+  
   initialize: ->
     @template = JST['instagram_photo_view']
 
