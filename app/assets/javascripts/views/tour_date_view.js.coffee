@@ -1,4 +1,5 @@
 class TrailerSwift.Views.TourDateView extends Backbone.View
+  id: 'info-window'
   initialize: ->
     @template = JST['tour_date_view']
 

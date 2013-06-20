@@ -12,3 +12,4 @@
     %li
       %a.facebook.btn.btn-info.btn-block{:href => @tourDate.get('facebook_url')} Facebook event
 
+%span.clearfix
