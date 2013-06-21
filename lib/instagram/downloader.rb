@@ -2,12 +2,31 @@ module Instagram
   class Downloader
     class << self
 
-      def update_media_for_user user_id, options={}
-        instagram_client = Instagram.client access_token: ENV['instagram_access_token']
-        images = instagram_client.user_recent_media(user_id, options)
+      def instagram_client
+        Instagram.client access_token: ENV['instagram_access_token']
+      end
 
+      def update_media_for_user user_id=19007880, options={}
+        images = instagram_client.user_recent_media(user_id, options)
+        create_images_from images
+
+      end
+
+      def update_media_for_tag tag="heymarseilles"
+        images = instagram_client.tag_recent_media tag
+        create_images_from images
+      end
+
+      def create_images_from images
         images.reverse.each do |image|
-          i = InstagramPhoto.new
+          if image.location?
+            i = InstagramPhoto.new
+            i.lat = image.location.latitude
+            i.lng = image.location.longitude
+          else
+            next
+          end
+
           i.tags = image.tags
           i.created_time = image.created_time
           i.link = image.link
@@ -20,24 +39,14 @@ module Instagram
           i.instagram_user_id = image.user.id
           i.instagram_id = image.id
 
-          if image.location?
-            i.lat = image.location.latitude
-            i.lng = image.location.longitude
-          end
-
-
           begin
             i.save!
           rescue ActiveRecord::RecordNotUnique
             puts "not unique, skipping: #{i.caption}"
           end
 
-          puts "saved photo with caption: #{i.caption}"
+          puts "saved photo from #{i.instagram_user} with caption: #{i.caption}"
         end
-      end
-
-      def update_media_for_tag tag
-
       end
     end
 
