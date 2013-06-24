@@ -13,7 +13,7 @@ class CurrentOffset
 
     def get_offset_hours
       current_location = Location.current
-      endpoint = "http://api.askgeo.com/v1/814/19f867fecfaa1c24467e974c444e6801b83f88720a477fd413647926f5a36621/query.json?points=#{current_location.lat}%2C#{current_location.lng}&databases=TimeZone"
+      endpoint = "https://api.askgeo.com/v1/#{ ENV["askgeo_id"] }/#{ ENV["askgeo_key"] }/query.json?points=#{current_location.lat}%2C#{current_location.lng}&databases=TimeZone"
 
       json_response = HTTParty.get endpoint
 
