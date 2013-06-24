@@ -1,3 +1,7 @@
+tracking_blacklist:
+  start: "19:00"
+  end: "09:00"
+  
 current_tour: Lines We Trace Midwest Madness Tour
 
 instagram:
