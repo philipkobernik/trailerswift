@@ -4,3 +4,10 @@ task :fetch_location => :environment do
   Location.fetch
   puts "done."
 end
+
+desc "call askgeo service to check for UTC offset"
+task :update_timezone_offset => :environment do
+  puts "updating offset..."
+  CurrentOffset.update_offset
+  puts "done."
+end
