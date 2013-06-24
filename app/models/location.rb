@@ -11,7 +11,7 @@ class Location < ActiveRecord::Base
 
     def within_blacklist_hours?
       TimeRange.new(Settings.tracking_blacklist.start, Settings.tracking_blacklist.end).
-        include?(Time.now.utc + CurrentOffset.fetch)
+        include?(Time.now.utc + (CurrentOffset.fetch).hours)
     end
 
     def current
