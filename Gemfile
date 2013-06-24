@@ -8,6 +8,12 @@ gem 'pg'
 
 # Gems used only for assets and not required
 # in production environments by default.
+group :test do
+
+  gem 'rspec-rails'
+
+end
+
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'
@@ -31,6 +37,9 @@ gem 'turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.0.1'
+
+# instasham
+gem 'instagram'
 
 #gem 'backbone-on-rails', '0.9.9.0'
 gem 'httparty'

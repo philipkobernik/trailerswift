@@ -1,0 +1,10 @@
+%h4= @photo.get('instagram_user')
+%a.instagram-user{target: "_blank", href: "http://www.instagram.com/#{@photo.get('instagram_user')}"} on instagram
+%img.img-polaroid{src: @photo.get('img_url_low')}
+%p= @photo.get('caption')
+- if @photo.has('users_in_photo')
+  %ul
+    - for user in @photo.get('users_in_photo')
+      %li
+        %i.icon-user
+        %span= user[0]

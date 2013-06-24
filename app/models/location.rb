@@ -8,7 +8,7 @@ class Location < ActiveRecord::Base
   end
 
   def self.fetch
-    latitude_endpoint = "http://www.google.com/latitude/apps/badge/api?user=#{Settings.latitude.id}&type=json" 
+    latitude_endpoint = "http://www.google.com/latitude/apps/badge/api?user=#{ENV['latitude_id']}&type=json" 
     loc = HTTParty.get latitude_endpoint
 
     if loc and loc["features"] and location = loc["features"][0]
