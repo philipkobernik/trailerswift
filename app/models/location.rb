@@ -15,7 +15,7 @@ class Location < ActiveRecord::Base
     end
 
     def current
-      latitude_endpoint = "http://www.google.com/latitude/apps/badge/api?user=#{ENV['latitude_id']}&type=json"
+      latitude_endpoint = Settings.latitude.endpoint
       loc = HTTParty.get latitude_endpoint
 
       if loc and loc["features"] and location = loc["features"][0]

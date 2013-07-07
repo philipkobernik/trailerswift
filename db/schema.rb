@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20130609050124) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "instagram_photos", force: true do |t|
     t.string   "tags",              array: true
     t.float    "lat"

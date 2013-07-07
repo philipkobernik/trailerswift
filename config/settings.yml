@@ -6,3 +6,6 @@ current_tour: Lines We Trace Midwest Madness Tour
 
 instagram:
   redirect_uri: 'http://www.trailer-swift.com/oauth/callback'
+
+latitude:
+  endpoint: <%= "http://www.google.com/latitude/apps/badge/api?user=#{ENV['latitude_id']}&type=json" %>
