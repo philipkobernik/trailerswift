@@ -7,7 +7,7 @@ module Instagram
       end
 
       def update_media_for_user user_id=19007880, options={}
-        images = instagram_client.user_recent_media(user_id, options)
+        images = instagram_client.user_recent_media(user_id, options.merge(count: 3))
         create_images_from images
 
       end
@@ -38,14 +38,15 @@ module Instagram
           i.instagram_user = image.user.username
           i.instagram_user_id = image.user.id
           i.instagram_id = image.id
+          i.tour = Tour.find_or_create_by name: Settings.current_tour
 
           begin
             i.save!
+            puts "saved photo from #{i.instagram_user} with caption: #{i.caption}"
           rescue ActiveRecord::RecordNotUnique
             puts "not unique, skipping: #{i.caption}"
           end
 
-          puts "saved photo from #{i.instagram_user} with caption: #{i.caption}"
         end
       end
     end
