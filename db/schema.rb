@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130609050124) do
+ActiveRecord::Schema.define(version: 20130710183906) do
 
   create_table "instagram_photos", force: true do |t|
     t.string   "tags",              array: true
