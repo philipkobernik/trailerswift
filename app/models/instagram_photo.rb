@@ -1,4 +1,5 @@
 class InstagramPhoto < ActiveRecord::Base
+  belongs_to :tour
 
   class << self
     def from_payload! payload

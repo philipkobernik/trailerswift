@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130710183906) do
+ActiveRecord::Schema.define(version: 20130710192919) do
 
   create_table "instagram_photos", force: true do |t|
     t.string   "tags",              array: true
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20130710183906) do
     t.string   "instagram_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "tour_id"
   end
 
   add_index "instagram_photos", ["instagram_id"], name: "index_instagram_photos_on_instagram_id", unique: true
