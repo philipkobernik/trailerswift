@@ -11,3 +11,10 @@ task :update_timezone_offset => :environment do
   CurrentOffset.update_offset
   puts "done."
 end
+
+desc "Call Instagram to check for new heymarseiles photos"
+task :fetch_photos => :environment do
+  puts "feching photos..."
+  Instagram::Downloader.update_media_for_user
+  puts "done."
+end
