@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130710192919) do
+ActiveRecord::Schema.define(version: 20130906093435) do
 
   create_table "instagram_photos", force: true do |t|
     t.string   "tags",              array: true
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20130710192919) do
     t.string   "img_url_thumb"
     t.string   "img_url_low"
     t.string   "img_url_standard"
-    t.string   "caption"
+    t.text     "caption"
     t.string   "users_in_photo",    array: true
     t.string   "instagram_user"
     t.string   "instagram_user_id"
