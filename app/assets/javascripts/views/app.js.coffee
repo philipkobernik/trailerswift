@@ -6,6 +6,15 @@ class TrailerSwift.Views.App extends Backbone.View
 
   render: =>
     console.log 'window load event fired. running views.app.render()'
+    TrailerSwift.Support.initInfoWindow()
+
+    sideBarView = new TrailerSwift.Views.SideBarView
+      collection: TrailerSwift.tourDates
+
+    TrailerSwift.Support.placeInstagramPhotos()
+
+    return true if TrailerSwift.locations.length < 2
+
     TrailerSwift.vanPoly = TrailerSwift.Support.polyLineFromLocations()
     TrailerSwift.vanPath = TrailerSwift.vanPoly.getPath()
     TrailerSwift.vanPoly.setMap(TrailerSwift.map)
@@ -18,15 +27,10 @@ class TrailerSwift.Views.App extends Backbone.View
     TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
     TrailerSwift.Support.placeTourDates()
 
-    TrailerSwift.Support.initInfoWindow()
-
-    sideBarView = new TrailerSwift.Views.SideBarView
-      collection: TrailerSwift.tourDates
 
 
     TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
 
-    TrailerSwift.Support.placeInstagramPhotos()
 
     #currentLocationView = new TrailerSwift.Views.userLocationView
       #model: TrailerSwift.userLocation
@@ -36,6 +40,8 @@ class TrailerSwift.Views.App extends Backbone.View
       #tourDate: TrailerSwift.tourDates.get(TrailerSwift.closestTourDate[1])
 
   headingWest: ->
+    return true if TrailerSwift.locations.length < 2
+
     nowLocation = TrailerSwift.locations.slice(-1)[0]
     lastLocation = TrailerSwift.locations.slice(-2, -1)[0]
 
