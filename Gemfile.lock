@@ -61,6 +61,8 @@ GEM
     has_scope (0.5.1)
     hashie (2.0.5)
     hike (1.2.1)
+    honeybadger (1.8.0)
+      json
     httparty (0.10.2)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
@@ -163,6 +165,7 @@ DEPENDENCIES
   geoip
   haml-rails
   haml_coffee_assets
+  honeybadger
   httparty
   inherited_resources
   instagram
