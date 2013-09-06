@@ -18,3 +18,10 @@ task :fetch_photos => :environment do
   Instagram::Downloader.update_media_for_user
   puts "done."
 end
+
+desc "Call Instagram to check for photos tagged #heymarseilles"
+task :fetch_fan_photos => :environment do
+  puts "feching fan photos..."
+  Instagram::Downloader.update_media_for_tag
+  puts "done."
+end
