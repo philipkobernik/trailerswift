@@ -13,6 +13,9 @@ class TrailerSwift.Views.App extends Backbone.View
 
     TrailerSwift.Support.placeInstagramPhotos()
 
+    TrailerSwift.Support.placeTourDates()
+    TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
+
     return true if TrailerSwift.locations.length < 2
 
     TrailerSwift.vanPoly = TrailerSwift.Support.polyLineFromLocations()
@@ -25,12 +28,6 @@ class TrailerSwift.Views.App extends Backbone.View
       vanImage = "/images/van-east.png"
 
     TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
-    TrailerSwift.Support.placeTourDates()
-
-
-
-    TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
-
 
     #currentLocationView = new TrailerSwift.Views.userLocationView
       #model: TrailerSwift.userLocation
