@@ -27,9 +27,19 @@ describe Gigpress::TourDateParser do
   end
 
   context "when lat and lng are present" do
-    subject { klass.read("test.csv").last }
+    context 'when lat and lng are in one field' do
+      subject { klass.read("test.csv")[2] }
 
-    its ([:lat]){ should == 23.1234567 }
-    its ([:lng]){ should == -129.7654321 }
+      its ([:lat]){ should == 23.1234567 }
+      its ([:lng]){ should == -129.7654321 }
+
+    end
+    context 'when lat and lng are in seperate cells' do
+      subject { klass.read("test.csv")[3] }
+
+      its ([:lat]){ should == 23.12 }
+      its ([:lng]){ should == -129.76 }
+
+    end
   end
 end

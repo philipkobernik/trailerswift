@@ -34,8 +34,16 @@ module Gigpress
 
         date_hash.merge! :facebook_url => row[17] # ticket url
 
-        date_hash.merge! :lat => row[23].to_f unless row[23].nil?
-        date_hash.merge! :lng => row[24].to_f unless row[24].nil?
+        if row[23] != nil
+          if row[23].index(',') != nil
+            latlng = row[23].split(',')
+            date_hash.merge! lat: latlng[0].to_f
+            date_hash.merge! lng: latlng[1].to_f
+          else
+            date_hash.merge! lat: row[23].to_f
+            date_hash.merge! lng: row[24].to_f unless row[24].nil?
+          end
+        end
 
         formatted_dates_array.unshift date_hash
       end
