@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :tours, :dependent => :destroy
+
   # You likely have this before callback set up for the token.
   before_save :ensure_auth_token
 

@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
   # This is Devise's authentication
   before_filter :authenticate_user!
 
+  def after_sign_in_path_for(resource)
+    tours_path
+  end
+
   def geolocation_target
     return "google.com" if ["development", "test"].include? Rails.env
 
