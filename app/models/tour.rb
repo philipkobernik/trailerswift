@@ -1,4 +1,5 @@
 class Tour < ActiveRecord::Base
+  belongs_to :user
   has_many :tour_dates, :dependent => :destroy
   has_many :locations, :dependent => :destroy
   has_many :instagram_photos, :dependent => :destroy

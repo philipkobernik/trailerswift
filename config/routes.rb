@@ -3,7 +3,10 @@ TrailerTrail::Application.routes.draw do
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
-  # resources :tour_dates
+  resources :tours do
+    resources :tour_dates
+    resources :locations
+  end
 
   # You can have the root of your site routed with "root"
   root to: 'welcome#index'
