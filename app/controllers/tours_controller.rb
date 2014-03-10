@@ -5,4 +5,8 @@ class ToursController < InheritedResources::Base
     current_user
   end
 
+  def permitted_params
+    params.permit!
+  end
+
 end
