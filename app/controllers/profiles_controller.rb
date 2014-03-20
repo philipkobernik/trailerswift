@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
 
   def show
     @profile = User.find_by_band_name!(params[:band_name])
-    puts @profile.inspect
 
     load_resources_for @profile
   end
