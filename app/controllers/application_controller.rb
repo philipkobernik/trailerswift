@@ -4,10 +4,10 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :null_session
 
-  # This is our new function that comes before Devise's one
-  before_filter :authenticate_user_from_token!
-  # This is Devise's authentication
-  before_filter :authenticate_user!
+
+  def session_logged_in?
+    current_user.present?
+  end
 
   def after_sign_in_path_for(resource)
     tours_path
