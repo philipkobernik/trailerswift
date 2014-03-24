@@ -1,28 +1,21 @@
 .span3.hidden-phone
   .well.sidebar-nav
     .nav-list
-      %img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
+      // some tour image goes here!
+      -#%img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
       %h2= @tour.user.band_name
-      %h4 Lines We Trace Tour 2013
+      %h4= @tour.name
       %p
-        Trailer Swift is the name of our trailer. 
-        %a{:href => "http://heymarseilles.com"} Lines We Trace 
-        is the brand new album we released 3/5/13. 
-        Follow our route around the country and catch a show if you can.
+        #{ @tour.user.band_name } is crushing it, and you would be wise to check 'em out while they are on tour!
+        // arguably some custom promo blurb goes here
+
     %ul.nav.nav-list.tour-dates
       %li.nav-header.tour-dates-header Upcoming Tour Dates
 
+      / arguably some custom band links would go here!
       %li.nav-header.hey-marseilles-header= @tour.user.band_name
       %li
-        %a{:href => "http://heymarseilles.com/media"} Music and videos
-      %li
-        %a{:href => "http://heymarseilles.com/store"} Get the record
-      %li
-        %a{:href => "http://www.facebook.com/heymarseilles"} Facebook
-      %li
-        %a{:href => "http://www.twitter.com/heymarseilles"} Twitter
-      %li
-        %a{:href => "http://www.instagram.com/heymarseilles"} Instagram
+        %a{:href => "#"} Music and videos
 
       %li.nav-header Disclaimer
       %li
