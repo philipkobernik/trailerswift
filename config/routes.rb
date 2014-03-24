@@ -6,6 +6,7 @@ TrailerTrail::Application.routes.draw do
   resources :tours do
     resources :tour_dates
     resources :locations
+    resources :instagram_photos
   end
 
   # You can have the root of your site routed with "root"
