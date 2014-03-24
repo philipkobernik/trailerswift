@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   respond_to :html
 
   def show
-    @profile = User.find_by_band_name!(params[:band_name])
+    @profile = User.find_by_band_slug!(params[:band_slug])
 
     load_resources_for @profile
   end

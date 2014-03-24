@@ -21,7 +21,7 @@ TrailerTrail::Application.routes.draw do
 
   post 'subscriptions/callback' => 'subscriptions#callback_new_media', as: :subscription_new_media
 
-  get '/:band_name', :controller => 'profiles', :action => 'show'
+  get '/:band_slug', :controller => 'profiles', :action => 'show'
 
 
   # Example resource route (maps HTTP verbs to controller actions automatically):

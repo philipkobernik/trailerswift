@@ -11,14 +11,13 @@ gem 'honeybadger'
 
 gem 'devise'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :test do
-
-  gem 'rspec-rails'
-
+# Only used in dev
+group :development do
+  gem 'seed-fu', github: 'mbleigh/seed-fu'
 end
 
+# Gems used only for assets and not required
+# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'
