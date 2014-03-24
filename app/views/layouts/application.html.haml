@@ -66,53 +66,11 @@
       -if alert
         %p.alert= alert
       .row-fluid
-        = render 'sidebar' if @controller == ToursController
+        = render 'sidebar' if params[:controller] == 'tours'
         .span9
           .hero-unit
             = yield
-          -#.row-fluid
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-          -#/ /row
-          -#.row-fluid
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            / /span
-          / /row
-        / /span
-      / /row
-      -#%hr/
+      %hr/
       %footer
         %p
           %a{:href => 'http://github.com/philipkobernik/trailerswift'} Open source
@@ -121,7 +79,3 @@
           and
           %a{:href => 'http://github.com/aelath'} aelath
 
-    / /span
-    / /.fluid-container
-    / :javascript
-    / Placed at the end of the document so the pages load faster
