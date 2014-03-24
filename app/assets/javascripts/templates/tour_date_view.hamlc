@@ -1,4 +1,4 @@
-%h4 Hey Marseilles
+%h4= TrailerSwift.tour_user.band_name
 %ul.unstyled.date-view
   %li
     %em

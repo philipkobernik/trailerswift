@@ -6,6 +6,7 @@ TrailerTrail::Application.routes.draw do
   resources :tours do
     resources :tour_dates
     resources :locations
+    resources :instagram_photos
   end
 
   # You can have the root of your site routed with "root"
@@ -21,7 +22,7 @@ TrailerTrail::Application.routes.draw do
 
   post 'subscriptions/callback' => 'subscriptions#callback_new_media', as: :subscription_new_media
 
-  get '/:band_name', :controller => 'profiles', :action => 'show'
+  get '/:band_slug', :controller => 'profiles', :action => 'show'
 
 
   # Example resource route (maps HTTP verbs to controller actions automatically):

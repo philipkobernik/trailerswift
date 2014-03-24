@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
     return request.remote_ip
   end
 
+  helper_method :session_logged_in?
+
   private
 
   # For this example, we are simply using token authentication

@@ -1,0 +1,13 @@
+#map_canvas
+:javascript
+  TrailerSwift.loadMap(#{@lat || 47.62}, #{@lng || -122.4});
+
+  TrailerSwift.locations = new TrailerSwift.Collections.Locations(#{@tour.locations.to_json});
+
+  TrailerSwift.tourDates = new TrailerSwift.Collections.TourDates(#{@tour.tour_dates.to_json});
+
+  TrailerSwift.instagramPhotos = new TrailerSwift.Collections.InstagramPhotos(#{@tour.instagram_photos.to_json});
+
+  TrailerSwift.tour_user = #{@tour.user.to_json}
+
+  TrailerSwift.app = new TrailerSwift.Views.App();

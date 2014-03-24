@@ -37,132 +37,41 @@
       (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement("script");a.type="text/javascript";a.async=!0;a.src=("https:"===e.location.protocol?"https:":"http:")+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName("script")[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split(".");2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;"undefined"!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a="mixpanel";"mixpanel"!==d&&(a+="."+d);b||(a+=" (stub)");return a};c.people.toString=function(){return c.toString(1)+".people (stub)"};i="disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.set_once people.increment people.append people.track_charge people.clear_charges people.delete_user".split(" ");for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);mixpanel.init("0974361e0bc278f4a63ae24bfce46ff1");
     / end Mixpanel
   %body
-    -#.navbar.navbar-inverse.navbar-fixed-top
-      -#.navbar-inner
-        -#.container-fluid
-          -#%button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
-            -#%span.icon-bar
-            -#%span.icon-bar
-            -#%span.icon-bar
-          -#%a.brand{:href => "#"} Trailer Swift
-          -#.nav-collapse.collapse
-            -#%p.navbar-text.pull-right
-              -#Logged in as
-              -#%a.navbar-link{:href => "#"} Username
-            -#%ul.nav
-              -#%li.active
-                -#%a{:href => "#"} Home
-              -#%li
-                -#%a{:href => "#about"} About
-              -#%li
-                -#%a{:href => "#contact"} Contact
-          -#/ /.nav-collapse
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        .container-fluid
+          %button.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "#"} Trailer Swift
+          .nav-collapse.collapse
+            %p.navbar-text.pull-right
+              - if session_logged_in?
+                Logged in as
+                %a.navbar-link{:href => "#"}= current_user.email
+              - else
+                %a.navbar-link{:href => new_user_session_path} Sign In
+            %ul.nav
+              %li
+                =link_to 'About', root_path
+              %li
+                %a{:href => 'http://github.com/philipkobernik/trailerswift'} Github Repo
     .container-fluid
       -if notice
         %p.notice= notice
       -if alert
         %p.alert= alert
       .row-fluid
-        .span3.hidden-phone
-          .well.sidebar-nav
-            .nav-list
-              %img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
-              %h2 Hey Marseilles
-              %h4 Lines We Trace Tour 2013
-              %p
-                Trailer Swift is the name of our trailer. 
-                %a{:href => "http://heymarseilles.com"} Lines We Trace 
-                is the brand new album we released 3/5/13. 
-                Follow our route around the country and catch a show if you can.
-            %ul.nav.nav-list.tour-dates
-              %li.nav-header.tour-dates-header Upcoming Tour Dates
-
-              %li.nav-header.hey-marseilles-header Hey Marseilles
-              %li
-                %a{:href => "http://heymarseilles.com/media"} Music and videos
-              %li
-                %a{:href => "http://heymarseilles.com/store"} Get the record
-              %li
-                %a{:href => "http://www.facebook.com/heymarseilles"} Facebook
-              %li
-                %a{:href => "http://www.twitter.com/heymarseilles"} Twitter
-              %li
-                %a{:href => "http://www.instagram.com/heymarseilles"} Instagram
-
-              %li.nav-header Disclaimer
-              %li
-                %span
-                  All map element locations are approximate and should not be used for navigation. Trailer Swift location is not real-time.
-
-              -#%li.nav-header Credits
-              -#%li
-                -#%p
-                  -#by
-                  -#%a{:href => "mailto:ptk921@gmail.com?subject=Trailer%20Swift"} philip 
-                  -#using
-                  -#%a{:href => "http://twitter.github.com/bootstrap/index.html"} bootstrap
-                  -#, 
-                  -#%a{:href => "http://backbonejs.org/"} backbone
-                  -#, 
-                  -#and 
-                  -#%a{:href => "https://developers.google.com/maps/documentation/javascript/reference"} google maps
-                  -#while driving across the southern United States.
-            -#%ul.nav.nav-list
-              -#%li.nav-header Notes
-              -#%li
-                -#%a{:href => "mailto:ptk921@gmail.com"} By Philip Kobernik
-              -#%li
-                -#%a{:href => "https://github.com/philipkobernik/trailerswift"} Trailer Swift on Github
-          / /.well
-        / /span
+        = render 'sidebar' if params[:controller] == 'tours'
         .span9
           .hero-unit
             = yield
-          -#.row-fluid
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-          -#/ /row
-          -#.row-fluid
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            -#/ /span
-            -#.span4
-              -#%h2 Heading
-              -#%p Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
-              -#%p
-                -#%a.btn{:href => "#"} View details »
-            / /span
-          / /row
-        / /span
-      / /row
-      -#%hr/
-      -#%footer
-        -#%p © Company 2013
-    / /.fluid-container
-    / :javascript
-    / Placed at the end of the document so the pages load faster
+      %footer.hidden-phone
+        %p
+          %a{:href => 'http://github.com/philipkobernik/trailerswift'} Open source
+          project by
+          %a{:href => 'http://github.com/philipkobernik'} philipkobernik
+          and
+          %a{:href => 'http://github.com/aelath'} aelath
+
