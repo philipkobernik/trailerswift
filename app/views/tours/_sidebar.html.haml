@@ -2,7 +2,7 @@
   .well.sidebar-nav
     .nav-list
       %img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
-      %h2 Hey Marseilles
+      %h2= @tour.user.band_name
       %h4 Lines We Trace Tour 2013
       %p
         Trailer Swift is the name of our trailer. 
@@ -12,7 +12,7 @@
     %ul.nav.nav-list.tour-dates
       %li.nav-header.tour-dates-header Upcoming Tour Dates
 
-      %li.nav-header.hey-marseilles-header= @profile.band_name
+      %li.nav-header.hey-marseilles-header= @tour.user.band_name
       %li
         %a{:href => "http://heymarseilles.com/media"} Music and videos
       %li
