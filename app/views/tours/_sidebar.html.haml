@@ -9,13 +9,17 @@
         #{ @tour.user.band_name } is crushing it, and you would be wise to check 'em out while they are on tour!
         // arguably some custom promo blurb goes here
 
-    %ul.nav.nav-list.tour-dates
+    %ul.nav.nav-list.tour-dates.upcoming
       %li.nav-header.tour-dates-header Upcoming Tour Dates
 
       / arguably some custom band links would go here!
+    %ul.nav.nav-list.tour-dates
       %li.nav-header.hey-marseilles-header= @tour.user.band_name
       %li
         %a{:href => "#"} Music and videos
+
+    %ul.nav.nav-list.tour-dates.past
+      %li.nav-header.tour-dates-header Past Tour Dates
 
       %li.nav-header Disclaimer
       %li

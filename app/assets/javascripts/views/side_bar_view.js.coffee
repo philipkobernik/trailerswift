@@ -1,20 +1,26 @@
 class TrailerSwift.Views.SideBarView extends Backbone.View
   initialize: ->
-    @setElement $(document).find('ul.nav.nav-list.tour-dates')
+    @setElement $(document).find('.sidebar-nav')
     @render()
 
   events:
     "click a.tour-date" : "onClick"
 
   render: ->
-    models = @collection.upcoming()
-    _.each(models, (model)=>
-      formattedDate = moment(model.get('date')).format('M/D')
+    _.each(@collection.models, (model)=>
+      tourDateMoment = moment(model.get('date'))
+      formattedDate = tourDateMoment.format('M/D')
+
       view = JST['side_bar_date']
         tourDate: model
         formattedDate: formattedDate
 
-      @$el.find('li.hey-marseilles-header').before view
+      tourDateMoment.add 'days', 1 # adjusting threshhold for a show tonight
+
+      if tourDateMoment > moment() # compare to 'now'
+        @$el.find('ul.upcoming li.nav-header').after view
+      else
+        @$el.find('ul.past li.nav-header').after view
     )
 
   onClick: (event)->
@@ -25,5 +31,4 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
     tourDate = TrailerSwift.tourDates.get(tourDateId)
 
     TrailerSwift.Support.loadInfoView tourDate
-
 
