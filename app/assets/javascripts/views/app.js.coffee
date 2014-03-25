@@ -14,7 +14,10 @@ class TrailerSwift.Views.App extends Backbone.View
     TrailerSwift.Support.placeInstagramPhotos()
 
     TrailerSwift.Support.placeTourDates()
-    TrailerSwift.tourDates.upcoming()[0].get('marker').setAnimation(google.maps.Animation.BOUNCE)
+
+    firstUpcomingDate = TrailerSwift.tourDates.upcoming()[0]
+    if firstUpcomingDate?
+      firstUpcomingDate.get('marker').setAnimation(google.maps.Animation.BOUNCE)
 
     return true if TrailerSwift.locations.length < 2
 
@@ -22,12 +25,7 @@ class TrailerSwift.Views.App extends Backbone.View
     TrailerSwift.vanPath = TrailerSwift.vanPoly.getPath()
     TrailerSwift.vanPoly.setMap(TrailerSwift.map)
 
-    if @headingWest()
-      vanImage = "/images/van-west.png"
-    else
-      vanImage = "/images/van-east.png"
-
-    TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
+    @buildVanMarker()
 
     #currentLocationView = new TrailerSwift.Views.userLocationView
       #model: TrailerSwift.userLocation
@@ -35,6 +33,14 @@ class TrailerSwift.Views.App extends Backbone.View
     #closestTourDateView = new TrailerSwift.Views.ClosestTourDate
       #miles: TrailerSwift.closestTourDate[0]
       #tourDate: TrailerSwift.tourDates.get(TrailerSwift.closestTourDate[1])
+
+  buildVanMarker: ->
+    if @headingWest()
+      vanImage = "/images/van-west.png"
+    else
+      vanImage = "/images/van-east.png"
+
+    TrailerSwift.vanMarker = TrailerSwift.Support.imageMarker(TrailerSwift.locations.last(), vanImage)
 
   headingWest: ->
     return true if TrailerSwift.locations.length < 2
