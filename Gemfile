@@ -21,18 +21,10 @@ group :development do
   gem 'spring'
 end
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'haml_coffee_assets'
-
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', platforms: :ruby
-
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'haml_coffee_assets'
+gem 'uglifier', '>= 1.0.3'
 
 group :test do
   gem 'rspec-rails'
@@ -65,14 +57,8 @@ gem 'inherited_resources'
 
 gem 'bootstrap-sass'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
 # Use unicorn as the app server
 # gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', group: :development
 
 # To use debugger
 # gem 'debugger'
