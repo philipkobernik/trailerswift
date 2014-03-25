@@ -18,9 +18,9 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
       tourDateMoment.add 'days', 1 # adjusting threshhold for a show tonight
 
       if tourDateMoment > moment() # compare to 'now'
-        @$el.find('ul.upcoming li.nav-header').after view
+        @$el.find('ul.upcoming li.tour-dates-header').after view
       else
-        @$el.find('ul.past li.nav-header').after view
+        @$el.find('ul.past li.tour-dates-header').after view
     )
 
   onClick: (event)->
