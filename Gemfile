@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.beta1'
+gem 'rails', '4.1.0.rc1'
 
 gem 'pg'
 
@@ -19,8 +19,9 @@ end
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+  gem 'sass-rails'
+  gem 'coffee-rails'
+  gem 'haml_coffee_assets'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', platforms: :ruby
@@ -56,7 +57,6 @@ gem 'haml-rails'
 
 gem 'inherited_resources'
 
-gem 'haml_coffee_assets'
 
 gem 'bootstrap-sass'
 
