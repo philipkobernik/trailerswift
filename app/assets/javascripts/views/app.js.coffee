@@ -2,14 +2,14 @@ class TrailerSwift.Views.App extends Backbone.View
   initialize: ->
     @setElement $(document).find('ul.tour-dates')
 
+    sideBarView = new TrailerSwift.Views.SideBarView
+      collection: TrailerSwift.tourDates
+
     google.maps.event.addDomListener(window, 'load', @render)
 
   render: =>
     console.log 'window load event fired. running views.app.render()'
     TrailerSwift.Support.initInfoWindow()
-
-    sideBarView = new TrailerSwift.Views.SideBarView
-      collection: TrailerSwift.tourDates
 
     TrailerSwift.Support.placeInstagramPhotos()
 
