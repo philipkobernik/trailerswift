@@ -11,6 +11,9 @@ gem 'honeybadger'
 
 gem 'devise'
 
+# Use unicorn as the app server
+gem 'unicorn'
+
 # Only used in dev
 group :development do
   gem 'seed-fu', github: 'mbleigh/seed-fu'
@@ -21,14 +24,15 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'rspec-rails'
+end
+
+gem 'haml-rails'
 gem 'sass-rails'
 gem 'coffee-rails'
 gem 'haml_coffee_assets'
 gem 'uglifier', '>= 1.0.3'
-
-group :test do
-  gem 'rspec-rails'
-end
 
 gem 'rails_config'
 
@@ -43,22 +47,16 @@ gem 'jbuilder', '~> 1.0.1'
 # instasham
 gem 'instagram'
 
-#gem 'backbone-on-rails', '0.9.9.0'
 gem 'httparty'
 
 gem 'geoip'
 
 gem 'geocoder'
 
-gem 'haml-rails'
-
 gem 'inherited_resources'
-
 
 gem 'bootstrap-sass'
 
-# Use unicorn as the app server
-# gem 'unicorn'
-
 # To use debugger
 # gem 'debugger'
+
