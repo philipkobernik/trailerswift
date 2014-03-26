@@ -64,7 +64,7 @@
       -if alert
         %p.alert= alert
       .row
-        = render 'sidebar' if params[:controller] == 'tours'
+        = render 'sidebar' if params[:controller] == 'tours' && params[:action] == 'show'
         .col-md-9
           .jumbotron
             = yield
