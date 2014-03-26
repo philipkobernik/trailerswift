@@ -63,10 +63,10 @@
         %p.notice= notice
       -if alert
         %p.alert= alert
-      .row-fluid
+      .row
         = render 'sidebar' if params[:controller] == 'tours'
         .col-md-9
-          .hero-unit
+          .jumbotron
             = yield
       %footer.hidden-phone
         %p

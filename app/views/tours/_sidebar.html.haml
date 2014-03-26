@@ -1,28 +1,29 @@
 .col-md-3.hidden-xs
-  .well.sidebar-nav
-    .nav-list
-      // some tour image goes here!
-      -#%img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
-      %h2= @tour.user.band_name
-      %h4= @tour.name
-      %p
-        #{ @tour.user.band_name } is crushing it, and you would be wise to check 'em out while they are on tour!
-        // arguably some custom promo blurb goes here
+  // some tour image goes here!
+  -#%img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
+  .sidebar-module.sidebar-module-inset
+    %h2= @tour.user.band_name
+    %h3= @tour.name
+    %p
+      #{ @tour.user.band_name } is crushing it, and you would be wise to check 'em out while they are on tour!
+      // arguably some custom promo blurb goes here
 
-    %ul.nav.nav-list.tour-dates.upcoming
-      %li.nav-header.tour-dates-header Upcoming Tour Dates
+  .sidebar-module.sidebar-module-inset
+    %h4 Upcoming Tour Dates
+    %ul.nav.nav-sidebar.tour-dates.upcoming
 
-      / arguably some custom band links would go here!
-    %ul.nav.nav-list.tour-dates
-      %li.nav-header.hey-marseilles-header= @tour.user.band_name
+    %h4 Past Tour Dates
+    %ul.nav.nav-sidebar.tour-dates.past
+
+    %h4 Resources
+    %ul.nav.nav-sidebar.tour-dates
       %li
         %a{:href => "#"} Music and videos
+      / arguably some custom band links would go here!
 
-    %ul.nav.nav-list.tour-dates.past
-      %li.nav-header.tour-dates-header Past Tour Dates
 
-      %li.nav-header Disclaimer
-      %li
-        %span
-          All map element locations are approximate and should not be used for navigation. Trailer Swift location is not real-time.
+  .sidebar-module.sidebar-module-inset
+    %h4 Disclaimer
+    %p
+      All map element locations are approximate and should not be used for navigation. Trailer Swift location is not real-time.
 
