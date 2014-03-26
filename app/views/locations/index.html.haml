@@ -1,0 +1,15 @@
+%h1= @tour.name
+%h3 Manage GPS History
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th id
+      %th located_at
+      %th lat
+      %th lng
+      %th city
+  %tbody
+    = render @locations

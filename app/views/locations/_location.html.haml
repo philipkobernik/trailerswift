@@ -1,0 +1,10 @@
+%tr
+  %td
+    %a.btn.btn-default{href: edit_tour_location_path(location.tour, location), role: 'button'} Edit
+  %td
+    = link_to "Delete", tour_location_path(location.tour, location), :method => :delete, class: "delete btn btn-warning", confirm: "Are you sure ?"
+  %td= location.id
+  %td= location.located_at
+  %td= location.lat
+  %td= location.lng
+  %td= location.reverse
