@@ -1,6 +1,6 @@
 User.seed(:id,
-  { :email => 'jon@example.com',   :band_name => 'The Head And The Heart', :band_slug => 'the-head-and-the-heart'},
-  { :email => 'emily@example.com', :band_name => 'TacocaT', :band_slug => "tacocat" }
+  { email: 'jon@example.com', password: 'password', band_name: 'The Head And The Heart', band_slug: 'the-head-and-the-heart'},
+  { email: 'emily@example.com', password: 'password', band_name: 'TacocaT', band_slug: "tacocat" }
 )
 
 jon = User.find_by_email 'jon@example.com'
