@@ -55,7 +55,7 @@ gem 'geocoder'
 
 gem 'inherited_resources'
 
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', '~> 3.1.1'
 
 # To use debugger
 # gem 'debugger'
