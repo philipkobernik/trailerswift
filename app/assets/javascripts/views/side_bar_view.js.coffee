@@ -1,6 +1,6 @@
 class TrailerSwift.Views.SideBarView extends Backbone.View
   initialize: ->
-    @setElement $(document).find('.sidebar-nav')
+    @setElement $(document).find('.sidebar')
     @render()
 
   events:
@@ -18,9 +18,9 @@ class TrailerSwift.Views.SideBarView extends Backbone.View
       tourDateMoment.add 'days', 1 # adjusting threshhold for a show tonight
 
       if tourDateMoment > moment() # compare to 'now'
-        @$el.find('ul.upcoming li.tour-dates-header').after view
+        @$el.find('ul.upcoming').append view
       else
-        @$el.find('ul.past li.tour-dates-header').after view
+        @$el.find('ul.past').append view
     )
 
   onClick: (event)->
