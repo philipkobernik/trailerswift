@@ -1,4 +1,7 @@
 class Location < ActiveRecord::Base
+
+  default_scope { order('located_at asc') }
+
   belongs_to :tour
 
   validates :located_at, :uniqueness => true
