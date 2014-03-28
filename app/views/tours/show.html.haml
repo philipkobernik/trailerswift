@@ -1,3 +1,6 @@
+- content_for :sidebar do
+  = render 'tours/sidebar'
+
 #map_canvas
 :javascript
   TrailerSwift.loadMap(#{@lat || 47.62}, #{@lng || -122.4});

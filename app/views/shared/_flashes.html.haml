@@ -1,0 +1,6 @@
+.container-fluid.flashes
+  - flash.each do |type, message|
+    - unless message.blank?
+      .alert.alert-warning.alert-dismissable.fade.in{:class => type}
+        = button_tag '×', class: 'close', data: { dismiss: 'alert' }
+        = message

@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
   def session_logged_in?
     current_user.present?
   end
+  helper_method :session_logged_in?
 
   def after_sign_in_path_for(resource)
     tours_path
@@ -24,7 +25,10 @@ class ApplicationController < ActionController::Base
     return request.remote_ip
   end
 
-  helper_method :session_logged_in?
+  def css_id_from_controller_view
+    "#{params[:controller].gsub("/","_")}_#{params[:action]}"
+  end
+  helper_method :css_id_from_controller_view
 
   private
 
