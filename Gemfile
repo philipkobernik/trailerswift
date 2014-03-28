@@ -14,6 +14,8 @@ gem 'devise'
 # Use unicorn as the app server
 gem 'unicorn'
 
+gem 'simple_form'
+
 # Only used in dev
 group :development do
   gem 'seed-fu', github: 'mbleigh/seed-fu'
