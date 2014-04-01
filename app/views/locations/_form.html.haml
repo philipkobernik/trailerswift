@@ -1,0 +1,7 @@
+= simple_form_for @location, url: tour_location_path(@tour, @location), class: 'horizontal-form' do |f|
+  = f.input :lat
+  = f.input :lng
+  = f.input :located_at
+  = f.input :reverse
+  = f.button :submit
+
