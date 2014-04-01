@@ -1,0 +1,9 @@
+= simple_form_for @tour_date, url: tour_tour_date_path do |f|
+  = f.input :date
+  = f.input :city_state
+  = f.input :venue
+  = f.input :ticket_url
+  = f.input :facebook_url
+  = f.input :lat, label: 'latitude'
+  = f.input :lng, label: 'longitude'
+  = f.submit

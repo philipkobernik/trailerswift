@@ -1,0 +1,18 @@
+%h1= @tour.name
+%h2= "Tour Date: #{@tour_date.venue} - #{@tour_date.date.strftime('%D')}"
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th id
+      %th date
+      %th city, state
+      %th venue
+      %th ticket url
+      %th facebook url
+      %th latitute
+      %th longitude
+
+  %tbody
+    = render @tour_date

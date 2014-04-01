@@ -1,0 +1,22 @@
+- content_for :sidebar do
+  = render 'locations/sidebar'
+
+%h1= @tour.name
+%h3 Manage Tour Dates
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th
+      %th id
+      %th date
+      %th city, state
+      %th venue
+      %th ticket url
+      %th facebook url
+      %th latitute
+      %th longitude
+
+  %tbody
+    = render @tour_dates
