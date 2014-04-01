@@ -9,7 +9,7 @@ class LocationsController < InheritedResources::Base
   belongs_to :tour
 
   def permitted_params
-    params.permit(:location => [:lat, :lng, :located_at])
+    params.permit(:location => [:lat, :lng, :located_at, :reverse])
   end
 
 end
