@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     # actually stored in the session and a token is needed
     # for every request. If you want the token to work as a
     # sign in token, you can simply remove store: false.
-    if user && Devise.secure_compare(user.auth_token, params[:user_token])
+    if user && Devise.secure_compare(user.auth_token, params[:auth_token])
       sign_in user, store: false
     end
 
