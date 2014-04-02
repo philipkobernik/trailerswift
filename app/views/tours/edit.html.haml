@@ -2,6 +2,15 @@
 
 = render 'form'
 
-= link_to 'Manage Tour Dates', tour_tour_dates_path(@tour)
 
-= link_to 'Manage GPS Locations', tour_locations_path(@tour)
+%hr
+%h3 Tour Dates
+%p
+  Tour currently has #{@tour.tour_dates.size} Tour Dates.
+= link_to 'Manage Tour Dates', tour_tour_dates_path(@tour), class: 'btn btn-primary'
+
+%h3 GPS Points
+%p
+  Tour currently has #{@tour.locations.size} GPS Points
+= link_to 'Manage GPS Points', tour_locations_path(@tour), class: 'btn btn-primary'
+
