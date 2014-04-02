@@ -1,8 +1,8 @@
 %tr
   %td
-    %a.btn.btn-default{href: edit_tour_tour_date_path(@tour, tour_date), role: 'button'} Edit
-  %td
-    = link_to "Delete", tour_tour_date_path(@tour, tour_date), :method => :delete, class: "delete btn btn-danger", confirm: "Are you sure ?"
+    = link_to 'Edit', edit_resource_url(tour_date), class: 'btn btn-warning btn-xs'
+    &nbsp;
+    = link_to "Delete", resource_url(tour_date), :method => :delete, class: "delete btn btn-danger btn-xs", confirm: "Are you sure ?"
   %td= tour_date.id
   %td= tour_date.date
   %td= tour_date.city_state
