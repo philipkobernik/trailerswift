@@ -43,11 +43,9 @@
           = yield :sidebar
 
           .col-md-9
-            .jumbotron
-              = yield
+            = yield
         - else
           .col-md-12
-            .jumbotron
-              = yield
+            = yield
         = render 'shared/footer'
   = yield :javascript
