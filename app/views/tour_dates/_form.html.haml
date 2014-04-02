@@ -1,4 +1,5 @@
-= simple_form_for @tour_date, url: tour_tour_date_path do |f|
+- action_url = params[:action] == 'new' ? collection_url : resource_url
+= simple_form_for resource, url: action_url do |f|
   = f.input :date
   = f.input :city_state
   = f.input :venue
