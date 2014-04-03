@@ -2,4 +2,5 @@
   %span= user.band_name
   - unless user.tours.blank?
     %ul
-      = render user.tours
+      = render partial: 'tours/tour_li', collection: user.tours, :as => :tour
+

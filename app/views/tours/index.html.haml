@@ -1,3 +1,14 @@
-%h1 Tours
-%ul
-  = render collection
+%h1= current_user.band_name
+%h3 Manage Tours
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      %th name
+
+  %tbody
+    = render collection
+
+= link_to 'New Tour', new_resource_url, class: 'btn btn-primary'
+

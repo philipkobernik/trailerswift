@@ -1,4 +1,5 @@
-= simple_form_for @tour do |f|
+- action_url = params[:action] == 'new' ? collection_url : resource_url
+= simple_form_for resource, url: action_url do |f|
   = f.input :name
 
   .form-group

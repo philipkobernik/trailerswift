@@ -1,2 +1,7 @@
-%li
-  =link_to tour.name, tour
+%tr
+  %td
+    = link_to 'Edit', edit_tour_path(tour), class: 'btn btn-warning btn-xs'
+    &nbsp;
+    = link_to "Delete", tour_url(tour), :method => :delete, class: "delete btn btn-danger btn-xs", confirm: "Are you sure ?"
+
+  %td= link_to tour.name, tour
