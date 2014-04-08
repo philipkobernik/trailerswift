@@ -5,8 +5,8 @@ class TourDatesController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      success.html { redirect_to tour_tour_dates_url(@tour) }
-      failure.html { redirect_to new_tour_tour_date_url(@tour) }
+      success.html { redirect_to tour_tour_dates_url }
+      failure.html { render(action: 'new') }
     end
   end
 

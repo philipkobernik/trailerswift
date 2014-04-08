@@ -1,5 +1,14 @@
-- action_url = params[:action] == 'new' ? collection_url : resource_url
+- action_url = @tour_date.persisted? ? resource_url : collection_url
 = simple_form_for resource, url: action_url do |f|
+  - if @tour_date.errors.any?
+    #error_explanation
+      %h2
+        #{ pluralize(@tour_date.errors.count, "error")} prohibited this tour date from being saved:
+
+      %ul
+        - @tour_date.errors.full_messages.each do |msg|
+          %li= msg
+
   = f.input :date
   = f.input :city_state
   = f.input :venue
