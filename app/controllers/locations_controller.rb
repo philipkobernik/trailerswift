@@ -1,4 +1,6 @@
-class LocationsController < InheritedResources::Base
+class LocationsController < ResourcesController
+  belongs_to :tour
+
   respond_to :html, :json
 
   # This is our new function that comes before Devise's one
@@ -6,10 +8,21 @@ class LocationsController < InheritedResources::Base
   # This is Devise's authentication
   before_filter :authenticate_user!
 
-  belongs_to :tour
+  def attrs_for_index
+    safe_params
+  end
+
+  def attrs_for_form
+    safe_params
+  end
 
   def permitted_params
-    params.permit(:location => [:lat, :lng, :located_at, :reverse])
+    params.permit(:location => safe_params)
   end
+
+  private
+    def safe_params
+      [:lat, :lng, :located_at, :reverse]
+    end
 
 end
