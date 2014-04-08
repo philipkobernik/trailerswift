@@ -1,0 +1,16 @@
+- if parent?
+  %h1= parent.try(:name)
+  %h2
+    = resource_class.model_name.human.titlecase
+- else
+  %h1
+    = resource_class.model_name.human.titlecase
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      - attrs_for_index.each do |attr|
+        %th= attr.to_s.titlecase
+  %tbody
+    = render partial: 'resource', object: resource
