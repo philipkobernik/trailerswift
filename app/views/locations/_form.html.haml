@@ -1,9 +1,0 @@
-= simple_form_for @location, url: tour_location_path(@tour, @location) do |f|
-  = f.input :lat
-  = f.input :lng
-  = f.input :located_at
-  = f.input :reverse
-
-  .form-group
-    .col-lg-1.col-lg-offset-1
-      = f.submit class: 'btn btn-success'

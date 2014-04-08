@@ -1,0 +1,21 @@
+- content_for :sidebar do
+  = render 'sidebar'
+
+- if parent?
+  %h1= parent.try(:name)
+  %h2
+    = resource_class.model_name.human.titlecase.pluralize
+- else
+  %h1
+    = resource_class.model_name.human.titlecase.pluralize
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      - attrs_for_index.each do |attr|
+        %th= attr.to_s.titlecase
+  %tbody
+    = render partial: 'resource', collection: collection
+
+= link_to "New #{ resource_class.model_name.human.titlecase }", new_resource_path, class: 'btn btn-primary'

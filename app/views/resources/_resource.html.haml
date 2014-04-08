@@ -1,0 +1,8 @@
+%tr
+  %td
+    = link_to 'Edit', edit_resource_url(resource), class: 'btn btn-warning btn-xs'
+    &nbsp;
+    = link_to "Delete", resource_url(resource), :method => :delete, class: "delete btn btn-danger btn-xs", confirm: "Are you sure ?"
+  - attrs_for_index.each do |attr|
+    %td= resource.attributes[attr.to_s]
+
