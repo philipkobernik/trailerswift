@@ -11,10 +11,16 @@ class Ability
     end
 
     user_abilities
+    tour_abilities
   end
 
   def user_abilities
     can [:show, :edit, :update], User, :id => @user.id
+  end
+
+  def tour_abilities
+    can :manage, Tour, :user_id => @user.id
+    can [:show, :index], Tour
   end
 end
 
