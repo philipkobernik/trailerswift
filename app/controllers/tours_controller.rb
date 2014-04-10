@@ -1,7 +1,7 @@
 class ToursController < InheritedResources::Base
   respond_to :html, :json
 
-  load_and_authorize_resource :tour
+  load_and_authorize_resource :tour, except: :show
 
   #def begin_of_association_chain
     #current_user
