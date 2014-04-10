@@ -24,4 +24,10 @@ FactoryGirl.define do
     tour
   end
 
+  factory :tour_date do
+    city_state 'example_city_state'
+    venue 'example_venue'
+    tour
+  end
+
 end

@@ -1,7 +1,12 @@
 class TourDatesController < ResourcesController
+  # inherited_resources config
   belongs_to :tour
-
   respond_to :html, :json
+
+  # cancan loading & authorization
+  load_resource :tour
+  load_and_authorize_resource :tour_date, :through => :tour
+
 
   def attrs_for_index
     safe_params
