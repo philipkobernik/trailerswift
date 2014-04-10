@@ -13,6 +13,15 @@ FactoryGirl.define do
 
   factory :tour do
     sequence(:name) { |n| "tour #{n}" }
+    user
+  end
+
+  factory :location do
+    sequence(:lat) { |n| n }
+    sequence(:lng) { |n| n }
+    sequence(:reverse) { |n| "city #{n}" }
+    located_at DateTime.now
+    tour
   end
 
 end

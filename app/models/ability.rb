@@ -12,6 +12,7 @@ class Ability
 
     user_abilities
     tour_abilities
+    location_abilities
   end
 
   def user_abilities
@@ -21,6 +22,10 @@ class Ability
   def tour_abilities
     can :manage, Tour, :user_id => @user.id
     can [:show, :index], Tour
+  end
+
+  def location_abilities
+    can :manage, Location, tour: { :user_id => @user.id }
   end
 end
 
