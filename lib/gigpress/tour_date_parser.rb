@@ -48,7 +48,6 @@ module Gigpress
         formatted_dates_array.unshift date_hash
       end
 
-      puts formatted_dates_array
       return formatted_dates_array
 
     end
