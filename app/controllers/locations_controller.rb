@@ -1,7 +1,12 @@
 class LocationsController < ResourcesController
+  # inherited_resources config
   belongs_to :tour
-
   respond_to :html, :json
+
+  # cancan loading/authorizing
+  load_resource :tour
+  load_and_authorize_resource :location, :through => :tour
+
 
   # This is our new function that comes before Devise's one
   before_filter :authenticate_user_from_token!, :unless => :session_logged_in?

@@ -16,6 +16,8 @@ gem 'unicorn'
 
 gem 'simple_form'
 
+gem 'cancan'
+
 # Only used in dev
 group :development do
   gem 'seed-fu', github: 'mbleigh/seed-fu'
@@ -26,8 +28,13 @@ group :development do
   gem 'spring'
 end
 
+group :development, :test do
+  gem 'factory_girl_rails'
+end
+
 group :test do
   gem 'rspec-rails'
+  gem 'mocha'
 end
 
 gem 'haml-rails'
