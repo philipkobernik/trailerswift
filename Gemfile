@@ -20,6 +20,7 @@ gem 'cancan'
 
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'fog'
 
 # Only used in dev
 group :development do
