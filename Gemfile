@@ -19,6 +19,7 @@ gem 'simple_form'
 gem 'cancan'
 
 gem 'carrierwave'
+gem 'mini_magick'
 
 # Only used in dev
 group :development do
