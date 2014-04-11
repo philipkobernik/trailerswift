@@ -2,9 +2,11 @@
 = simple_form_for resource, url: action_url, :html => {:multipart => true} do |f|
   = f.input :name
 
-  - if resource.tour_image.present?
-    = image_tag resource.tour_image.url
   = f.input :tour_image, :as => :file
+  - if resource.tour_image.present?
+    .form-group
+      .col-lg-1.col-lg-offset-1
+        = image_tag resource.tour_image.small.url
 
   .form-group
     .col-lg-1.col-lg-offset-1

@@ -1,7 +1,8 @@
 .col-md-2.hidden-xs.sidebar
-  // some tour image goes here!
-  -#%img{:alt => "Lines We Trace", :title => "Lines We Trace", :src => "/images/lines-we-trace-album-art.jpg" }
   .sidebar-module.sidebar-module-inset
+    - if resource.tour_image?
+      %img{:alt => "Tour Image", :title => "Tour Image", :src => resource.tour_image.thumb.url }
+
     %h2= @tour.user.band_name
     %h3= @tour.name
     %p
