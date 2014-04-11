@@ -18,6 +18,8 @@ gem 'simple_form'
 
 gem 'cancan'
 
+gem 'carrierwave'
+
 # Only used in dev
 group :development do
   gem 'seed-fu', github: 'mbleigh/seed-fu'

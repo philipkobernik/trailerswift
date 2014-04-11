@@ -1,6 +1,10 @@
 - action_url = params[:action] == 'new' ? collection_url : resource_url
-= simple_form_for resource, url: action_url do |f|
+= simple_form_for resource, url: action_url, :html => {:multipart => true} do |f|
   = f.input :name
+
+  - if resource.tour_image.present?
+    = image_tag resource.tour_image.url
+  = f.input :tour_image, :as => :file
 
   .form-group
     .col-lg-1.col-lg-offset-1

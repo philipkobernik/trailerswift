@@ -17,7 +17,7 @@ class ToursController < InheritedResources::Base
   end
 
   def permitted_params
-    params.permit(:tour => [:name])
+    params.permit(:tour => [:name, :tour_image])
   end
 
 end
