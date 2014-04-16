@@ -1,7 +1,8 @@
 .col-md-2.hidden-xs.sidebar
-  // some tour image should go here!
-  -#%img{:alt => "image title", :title => "image title", :src => "/images/image.jpg" }
   .sidebar-module.sidebar-module-inset
+    - if parent.tour_image?
+      %img{:alt => "Tour Image", :title => "Tour Image", :src => parent.tour_image.thumb.url }
+
     %h3.page-header Tour Dates Admin
     %ul.nav.nav-sidebar
       %li
