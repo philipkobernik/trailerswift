@@ -6,11 +6,27 @@ class Tour < ActiveRecord::Base
 
   mount_uploader :tour_image, TourImageUploader
 
-  def import_tour_dates(file_name)
+  def import_gigpress_dates(file)
     raise "must be persisted" unless persisted?
-    Gigpress::TourDateParser.read(file_name).each do |tour_date_args|
-      TourDate.create! tour_date_args.merge(tour_id: self.id)
+
+    success_count = 0
+    error_count = 0
+    errors = []
+
+    Gigpress::TourDateParser.read(file).each_with_index do |tour_date_args, index|
+      begin
+        TourDate.create! tour_date_args.merge(tour_id: self.id)
+        success_count += 1
+      rescue StandardError => e
+        error_count += 1
+        errors << "Tour Date ##{index+1}: #{e.message}"
+      end
     end
 
+    return {
+      success_count: success_count,
+      error_count: error_count,
+      error_messages: errors
+    }
   end
 end

@@ -11,3 +11,19 @@
       %li
         = link_to "Manage GPS Locations", tour_locations_path(parent)
 
+    %hr
+    = form_tag import_tour_tour_dates_path, multipart: true do
+      .form-group
+        %label{for: 'gigpress_file'} Gigpress Import
+        = file_field_tag :file, id: 'gigpress_file'
+        %p.help-block Select CSV file exported from gigpress
+      .form-group
+        = submit_tag "Import", class: "btn btn-default btn-sm disabled"
+
+- content_for :javascript do
+  :javascript
+    $(function() {
+      $form = $('form');
+      new TrailerSwift.Views.GigpressImportForm({el: $form});
+    });
+
