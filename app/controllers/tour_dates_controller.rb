@@ -23,6 +23,11 @@ class TourDatesController < ResourcesController
     end
   end
 
+  def import
+    @import_results = @tour.import_gigpress_dates(params[:file])
+    render action: 'index'
+  end
+
   def permitted_params
     params.permit(:tour_date => safe_params)
   end

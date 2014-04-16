@@ -1,8 +1,8 @@
 module Gigpress
   class TourDateParser
 
-    def self.read(file_name="dates.csv")
-      dates_csv = CSV.read(File.join(Rails.root, "db", "tour_dates", file_name))
+    def self.read(file)
+      dates_csv = CSV.read(file.path)
       dates_csv.shift # remove first row as it contains headers
 
       formatted_dates_array = []

@@ -4,7 +4,10 @@ TrailerTrail::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   resources :tours do
-    resources :tour_dates
+    resources :tour_dates do
+      post 'import', :on => :collection
+    end
+
     resources :locations
     resources :instagram_photos
   end

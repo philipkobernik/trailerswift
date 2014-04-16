@@ -1,0 +1,34 @@
+- content_for :sidebar do
+  = render 'sidebar'
+
+%h1= parent.try(:name)
+%h2
+  = resource_class.model_name.human.titlecase.pluralize
+
+- if @import_results.present?
+  #import_results.bg-info
+    %h3 Import Results
+    %ul
+      %li
+        = pluralize(@import_results[:success_count], 'tour date')
+        successfully created
+      %li
+        = pluralize(@import_results[:error_count], 'tour date')
+        encountered errors
+
+        %ul
+          - @import_results[:error_messages].each do |msg|
+            %li= msg
+
+
+%table.table.table-striped
+  %thead
+    %tr
+      %th
+      - attrs_for_index.each do |attr|
+        %th= attr.to_s.titlecase
+  %tbody
+    = render partial: 'resource', collection: collection
+
+= link_to "New #{ resource_class.model_name.human.titlecase }", new_resource_path, class: 'btn btn-primary'
+
