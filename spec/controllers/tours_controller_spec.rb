@@ -14,8 +14,8 @@ describe ToursController do
   context 'authorizes resource' do
 
     context '#index' do
-      it 'authorizes resource' do
-        controller.expects(:authorize!).with(:index, Tour).returns true
+      it 'does NOT authorize resource' do
+        controller.expects(:authorize!).never
         get :index
       end
     end
