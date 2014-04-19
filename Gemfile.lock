@@ -196,7 +196,6 @@ GEM
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
-    spring (1.1.2)
     sprockets (2.12.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -257,7 +256,6 @@ DEPENDENCIES
   sass-rails
   seed-fu!
   simple_form
-  spring
   turbolinks
   uglifier (>= 1.0.3)
   unicorn
