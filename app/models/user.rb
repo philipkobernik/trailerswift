@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  def active_tour
+    tours.where(active: true).limit(1).first
+  end
+
   private
 
   def generate_auth_token

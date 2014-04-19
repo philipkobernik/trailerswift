@@ -4,6 +4,8 @@ describe SessionsController do
   render_views
 
   let(:user) { create :user }
+  let(:user_with_active_tour) { create :user, tours: [active_tour] }
+  let(:active_tour) { build :tour, active: true }
 
   before do
     @request.env["devise.mapping"] = Devise.mappings[:user]
@@ -26,7 +28,29 @@ describe SessionsController do
         it { should be_success }
 
         it "should include auth_token " do
-          JSON.parse(response.body)['auth_token'].should_not be_blank
+          JSON.parse(response.body)['auth_token'].should eq(user.auth_token)
+        end
+
+        it "should include auth_token " do
+          JSON.parse(response.body)['email'].should eq(user.email)
+        end
+
+        context 'when user has active_tour' do
+          let(:create_params) { {user: {email: user_with_active_tour.email, password: 'password'} } }
+
+          it "includes active tour name" do
+            JSON.parse(response.body)['active_tour']['name'].should eq(active_tour.name)
+          end
+
+          it "includes active tour id" do
+            JSON.parse(response.body)['active_tour']['id'].should eq(active_tour.id)
+          end
+        end
+
+        context 'when user doesn NOT have active tour' do
+          it "does not include 'active_tour' attributes" do
+            JSON.parse(response.body)['active_tour'].should be_nil
+          end
         end
       end
 
@@ -38,10 +62,7 @@ describe SessionsController do
         it 'should have error message' do
           JSON.parse(response.body)['errors'].should eq(['Login failed.'])
         end
-
       end
-
     end
-
   end
 end

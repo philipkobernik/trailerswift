@@ -4,7 +4,15 @@ class Tour < ActiveRecord::Base
   has_many :locations, :dependent => :destroy
   has_many :instagram_photos, :dependent => :destroy
 
+  before_validation :ensure_uniqueness_of_active_state
+
   mount_uploader :tour_image, TourImageUploader
+
+  def ensure_uniqueness_of_active_state
+    if active?
+      self.user.tours.where.not(id: self.id).update_all active: false
+    end
+  end
 
   def import_gigpress_dates(file)
     raise "must be persisted" unless persisted?
