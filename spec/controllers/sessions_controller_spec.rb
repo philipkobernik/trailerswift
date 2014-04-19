@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe SessionsController do
+  render_views
+
   let(:user) { create :user }
 
   before do
