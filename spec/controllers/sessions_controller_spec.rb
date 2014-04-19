@@ -35,6 +35,10 @@ describe SessionsController do
           JSON.parse(response.body)['email'].should eq(user.email)
         end
 
+        it "should include band_name " do
+          JSON.parse(response.body)['band_name'].should eq(user.band_name)
+        end
+
         context 'when user has active_tour' do
           let(:create_params) { {user: {email: user_with_active_tour.email, password: 'password'} } }
 
