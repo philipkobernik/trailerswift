@@ -25,11 +25,6 @@ gem 'fog'
 # Only used in dev
 group :development do
   gem 'seed-fu', github: 'mbleigh/seed-fu'
-
-  # User defined rake tasks will run in the development environment by
-  # default. If you want them to run in other environments consult the
-  # Spring README.
-  gem 'spring'
 end
 
 group :development, :test do
